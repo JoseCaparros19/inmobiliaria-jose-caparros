@@ -1468,11 +1468,14 @@ const googleScriptUrl='https://script.google.com/macros/s/AKfycby-4dIfxIPyuT6EE-
 
 const siteUrl='https://josecaparros19.github.io/inmobiliaria-jose-caparros/';
 
+
 /* ==========================================
    VARIABLES DEL LEAD
 ========================================== */
 
 let leadCreated=false;
+let leadId="";
+
 
 /* ==========================================
    FUNCIÓN PARA VOLVER AL INICIO
@@ -1493,100 +1496,160 @@ window.location.hash='inicio';
 
 }
 
+
 /* ==========================================
-   FUNCIÓN PARA ENVIAR LEAD
-   AHORA SE EJECUTA EN EL PRIMER PASO
+   CREAR LEAD EN EL PRIMER PASO
 ========================================== */
 
 function crearLeadInicial(){
 
-const nombre=document.getElementById('leadName').value;
-const telefono=document.getElementById('leadPhone').value;
-const email=document.getElementById('leadEmail').value;
-const vender=document.getElementById('leadSelling').value;
+const nombre=
+document.getElementById('leadName').value;
+
+const telefono=
+document.getElementById('leadPhone').value;
+
+const email=
+document.getElementById('leadEmail').value;
+
+const vender=
+document.getElementById('leadSelling').value;
+
+
+/* ==========================================
+   GENERAR ID ÚNICO
+========================================== */
+
+leadId=
+Date.now().toString()+
+"-"+
+Math.random().toString(36).substring(2,10);
+
+
+/* ==========================================
+   DATOS DEL PRIMER PASO
+========================================== */
 
 const data={
 
-nombre:nombre,
+accion:
+"crear_lead_vendedor",
 
-telefono:telefono,
+leadId:
+leadId,
 
-email:email,
+nombre:
+nombre,
 
-consentimiento:'Sí',
+telefono:
+telefono,
 
-vender:vender,
+email:
+email,
 
-pagina:siteUrl,
+consentimiento:
+"Sí",
 
-origen:'Valorador web Inmobiliaria José Caparrós',
+vender:
+vender,
 
-tipoLead:'Vendedor - Primer paso valorador',
+pagina:
+siteUrl,
 
-estadoLead:'Lead generado - pendiente de valoración'
+origen:
+"Valorador web Inmobiliaria José Caparrós"
 
 };
 
+
 leadStatus.style.display='block';
 
-leadStatus.textContent='Guardando tus datos...';
+leadStatus.textContent=
+'Guardando tus datos...';
 
 continueBtn.disabled=true;
 
+
+/* ==========================================
+   ENVIAR A GOOGLE APPS SCRIPT
+========================================== */
+
 try{
 
-const iframe=document.getElementById('leadSubmitFrame');
+const iframe=
+document.getElementById('leadSubmitFrame');
 
-const postForm=document.getElementById('leadPostForm');
+const postForm=
+document.getElementById('leadPostForm');
 
 postForm.innerHTML='';
+
 
 Object.entries(data).forEach(function(entry){
 
 const key=entry[0];
+
 const value=entry[1];
 
-const input=document.createElement('input');
+const input=
+document.createElement('input');
 
 input.type='hidden';
+
 input.name=key;
+
 input.value=value;
 
 postForm.appendChild(input);
 
 });
 
-postForm.action=googleScriptUrl;
 
-postForm.target=iframe.name;
+postForm.action=
+googleScriptUrl;
+
+postForm.target=
+iframe.name;
 
 postForm.submit();
 
+
 /*
-   IMPORTANTE:
-   El lead se considera creado una vez realizado
-   el envío del formulario oculto.
+   El lead se ha enviado al Apps Script.
 */
 
 leadCreated=true;
 
-/* Meta Pixel - Lead */
+
+/* ==========================================
+   META PIXEL
+========================================== */
+
 fbq('track','Lead');
 
-/* Pasar al segundo paso */
+
+/* ==========================================
+   PASAR AL SEGUNDO PASO
+========================================== */
 
 document.getElementById('step1').style.display='none';
+
 document.getElementById('step2').style.display='block';
 
 leadStatus.style.display='none';
 
 continueBtn.disabled=false;
 
+
 }catch(err){
 
-console.error('Google Apps Script:',err);
+console.error(
+'Google Apps Script:',
+err
+);
 
 leadStatus.innerHTML=`
+
 <div class="success-box">
 
 <div class="icon">!</div>
@@ -1600,6 +1663,7 @@ Comprueba tu conexión e inténtalo de nuevo.
 </span>
 
 </div>
+
 `;
 
 continueBtn.disabled=false;
@@ -1608,25 +1672,41 @@ continueBtn.disabled=false;
 
 }
 
+
 /* ==========================================
-   PASO 1 VALORACIÓN
-   AQUÍ SE CREA EL LEAD
+   PASO 1
 ========================================== */
 
 continueBtn.addEventListener('click',function(){
 
-const name=document.getElementById('leadName');
-const phone=document.getElementById('leadPhone');
-const email=document.getElementById('leadEmail');
-const consent=document.getElementById('consent');
+const name=
+document.getElementById('leadName');
 
-if(!name.reportValidity()) return;
+const phone=
+document.getElementById('leadPhone');
 
-if(!phone.reportValidity()) return;
+const email=
+document.getElementById('leadEmail');
 
-if(!email.reportValidity()) return;
+const consent=
+document.getElementById('consent');
 
-if(!consent.reportValidity()) return;
+
+if(!name.reportValidity())
+return;
+
+
+if(!phone.reportValidity())
+return;
+
+
+if(!email.reportValidity())
+return;
+
+
+if(!consent.reportValidity())
+return;
+
 
 /*
    EVITAR DUPLICADOS
@@ -1635,19 +1715,22 @@ if(!consent.reportValidity()) return;
 if(leadCreated){
 
 document.getElementById('step1').style.display='none';
+
 document.getElementById('step2').style.display='block';
 
 return;
 
 }
 
+
 /*
-   CREAR LEAD AHORA
+   CREAR LEAD
 */
 
 crearLeadInicial();
 
 });
+
 
 /* ==========================================
    VOLVER AL PASO ANTERIOR
@@ -1656,9 +1739,11 @@ crearLeadInicial();
 backBtn.addEventListener('click',function(){
 
 document.getElementById('step2').style.display='none';
+
 document.getElementById('step1').style.display='block';
 
 });
+
 
 /* ==========================================
    FORMULARIO DE VALORACIÓN
@@ -1668,106 +1753,190 @@ form.addEventListener('submit',function(e){
 
 e.preventDefault();
 
-const sqm=Number(document.getElementById('sqm').value)||0;
-const rooms=Number(document.getElementById('rooms').value)||0;
-const baths=Number(document.getElementById('baths').value)||0;
 
-const type=document.getElementById('type').value;
-const area=document.getElementById('area').value;
-const condition=document.getElementById('condition').value;
+/* ==========================================
+   COMPROBAR QUE EXISTE EL LEAD
+========================================== */
+
+if(!leadId){
+
+alert(
+'No se ha encontrado el identificador del lead. Vuelve al primer paso e inténtalo de nuevo.'
+);
+
+return;
+
+}
+
+
+const sqm=
+Number(
+document.getElementById('sqm').value
+)||0;
+
+const rooms=
+Number(
+document.getElementById('rooms').value
+)||0;
+
+const baths=
+Number(
+document.getElementById('baths').value
+)||0;
+
+const type=
+document.getElementById('type').value;
+
+const area=
+document.getElementById('area').value;
+
+const condition=
+document.getElementById('condition').value;
+
 
 if(!sqm || !area){
 
 document.getElementById('sqm').reportValidity();
+
 document.getElementById('area').reportValidity();
 
 return;
 
 }
 
-const zone=zonePrices[area]||zonePrices.general;
+
+const zone=
+zonePrices[area]||
+zonePrices.general;
+
 
 let priceM2=
 zone.price*
 (typeFactor[type]||1)*
 (conditionFactor[condition]||1);
 
+
 priceM2*=
 1+
-Math.min(Math.max(rooms-2,0),3)*.012+
-Math.min(Math.max(baths-1,0),2)*.008;
+Math.min(
+Math.max(rooms-2,0),
+3
+)*.012+
+Math.min(
+Math.max(baths-1,0),
+2
+)*.008;
 
-const center=Math.round((sqm*priceM2)/1000)*1000;
 
-const low=Math.round(center*.94/1000)*1000;
+const center=
+Math.round(
+(sqm*priceM2)/1000
+)*1000;
 
-const high=Math.round(center*1.06/1000)*1000;
+
+const low=
+Math.round(
+center*.94/1000
+)*1000;
+
+
+const high=
+Math.round(
+center*1.06/1000
+)*1000;
+
+
+/* ==========================================
+   MOSTRAR RESULTADO
+========================================== */
 
 document.getElementById('range').textContent=
+
 low.toLocaleString('es-ES')+
 ' € – '+
 high.toLocaleString('es-ES')+
 ' €';
 
+
 document.getElementById('zoneRef').textContent=
+
 'Referencia de la zona: '+
 zone.price.toLocaleString('es-ES')+
 ' €/m² (agosto de 2026).';
 
-const ex=[70,90,110].map(function(m){
+
+const ex=
+[70,90,110]
+.map(function(m){
 
 return '<div class="example"><span>'+
 m+
 ' m²</span><strong>'+
-Math.round((m*zone.price)/1000).toLocaleString('es-ES')+
+Math.round(
+(m*zone.price)/1000
+).toLocaleString('es-ES')+
 '.000 €</strong></div>';
 
-}).join('');
+})
+.join('');
+
 
 document.getElementById('examples').innerHTML=ex;
 
-const resultBox=document.getElementById('result');
+
+const resultBox=
+document.getElementById('result');
 
 resultBox.style.display='block';
+
 resultBox.classList.add('visible');
+
 
 setTimeout(function(){
 
 resultBox.scrollIntoView({
+
 behavior:'smooth',
+
 block:'start'
+
 });
 
 },80);
 
-/*
-   AQUÍ YA NO CREAMOS EL LEAD.
 
-   El lead se creó anteriormente en el PRIMER PASO.
-   Por tanto, aquí solamente mostramos la valoración.
-*/
+/* ==========================================
+   ACTUALIZAR EL MISMO LEAD
+========================================== */
 
 const data={
 
-nombre:document.getElementById('leadName').value,
+accion:
+"actualizar_lead_vendedor",
 
-telefono:document.getElementById('leadPhone').value,
+leadId:
+leadId,
 
-email:document.getElementById('leadEmail').value,
+zona:
+zone.name,
 
-zona:zone.name,
+tipo:
+type,
 
-tipo:type,
+metros:
+sqm,
 
-metros:sqm,
+habitaciones:
+rooms,
 
-habitaciones:rooms,
+banos:
+baths,
 
-banos:baths,
-
-estado:condition,
+estado:
+condition,
 
 valoracion:
+
 low.toLocaleString('es-ES')+
 ' € - '+
 high.toLocaleString('es-ES')+
@@ -1775,32 +1944,97 @@ high.toLocaleString('es-ES')+
 
 };
 
-/*
-   WhatsApp
-*/
 
-const msg=encodeURIComponent(
-'Hola, soy '+
-data.nombre+
-'. He realizado una valoración online de mi vivienda en '+
-data.zona+
-'. La estimación ha sido de '+
-data.valoracion+
-'. Mi teléfono es '+
-data.telefono+
-'. Me gustaría hablar sobre una valoración personalizada.'
+/* ==========================================
+   ENVIAR ACTUALIZACIÓN A GOOGLE APPS SCRIPT
+========================================== */
+
+try{
+
+const iframe=
+document.getElementById('leadSubmitFrame');
+
+const postForm=
+document.getElementById('leadPostForm');
+
+postForm.innerHTML='';
+
+
+Object.entries(data).forEach(function(entry){
+
+const key=entry[0];
+
+const value=entry[1];
+
+const input=
+document.createElement('input');
+
+input.type='hidden';
+
+input.name=key;
+
+input.value=value;
+
+postForm.appendChild(input);
+
+});
+
+
+postForm.action=
+googleScriptUrl;
+
+postForm.target=
+iframe.name;
+
+postForm.submit();
+
+
+}catch(err){
+
+console.error(
+'Error actualizando lead:',
+err
 );
 
-document.getElementById('resultWhatsapp').href=
-'https://wa.me/34611668768?text='+msg;
+}
 
-/*
+
+/* ==========================================
+   WHATSAPP
+========================================== */
+
+const msg=
+encodeURIComponent(
+
+'Hola, soy '+
+document.getElementById('leadName').value+
+'. He realizado una valoración online de mi vivienda en '+
+zone.name+
+'. La estimación ha sido de '+
+low.toLocaleString('es-ES')+
+' € - '+
+high.toLocaleString('es-ES')+
+' €. Mi teléfono es '+
+document.getElementById('leadPhone').value+
+'. Me gustaría hablar sobre una valoración personalizada.'
+
+);
+
+
+document.getElementById('resultWhatsapp').href=
+'https://wa.me/34611668768?text='+
+msg;
+
+
+/* ==========================================
    MENSAJE FINAL
-*/
+========================================== */
 
 leadStatus.style.display='block';
 
+
 leadStatus.innerHTML=`
+
 <div class="success-box">
 
 <div class="icon">✓</div>
@@ -1818,25 +2052,31 @@ Si quieres, puedes contactar directamente con nosotros para una valoración pers
 </span>
 
 </div>
+
 `;
 
-/*
+
+/* ==========================================
    VOLVER AL INICIO
-*/
+========================================== */
 
 setTimeout(function(){
 
 form.reset();
 
 document.getElementById('step2').style.display='none';
+
 document.getElementById('step1').style.display='block';
 
 resultBox.style.display='none';
+
 resultBox.classList.remove('visible');
 
 leadStatus.style.display='none';
 
 leadCreated=false;
+
+leadId="";
 
 volverAlInicio();
 
@@ -1844,133 +2084,207 @@ volverAlInicio();
 
 });
 
+
 /* ==========================================
    FORMULARIO DE COMPRADORES
 ========================================== */
 
-const buyerForm=document.getElementById('buyerForm');
+const buyerForm=
+document.getElementById('buyerForm');
+
 
 buyerForm.addEventListener('submit',function(e){
 
 e.preventDefault();
 
-const consent=document.getElementById('buyerConsent');
 
-if(!document.getElementById('buyerName').reportValidity()) return;
+const consent=
+document.getElementById('buyerConsent');
 
-if(!document.getElementById('buyerPhone').reportValidity()) return;
 
-if(!document.getElementById('buyerEmail').reportValidity()) return;
+if(!document.getElementById('buyerName').reportValidity())
+return;
 
-if(!document.getElementById('buyerArea').reportValidity()) return;
 
-if(!document.getElementById('buyerSavings').reportValidity()) return;
+if(!document.getElementById('buyerPhone').reportValidity())
+return;
 
-if(!document.getElementById('buyerIncome').reportValidity()) return;
 
-if(!consent.reportValidity()) return;
+if(!document.getElementById('buyerEmail').reportValidity())
+return;
+
+
+if(!document.getElementById('buyerArea').reportValidity())
+return;
+
+
+if(!document.getElementById('buyerSavings').reportValidity())
+return;
+
+
+if(!document.getElementById('buyerIncome').reportValidity())
+return;
+
+
+if(!consent.reportValidity())
+return;
+
 
 const preferences=[];
 
-if(document.getElementById('buyerElevator').checked)
+
+if(
+document.getElementById('buyerElevator').checked
+)
 preferences.push('Ascensor');
 
-if(document.getElementById('buyerGarage').checked)
+
+if(
+document.getElementById('buyerGarage').checked
+)
 preferences.push('Garaje');
 
-if(document.getElementById('buyerTerrace').checked)
+
+if(
+document.getElementById('buyerTerrace').checked
+)
 preferences.push('Terraza');
 
-if(document.getElementById('buyerExterior').checked)
+
+if(
+document.getElementById('buyerExterior').checked
+)
 preferences.push('Exterior');
+
 
 const buyerData={
 
-nombre:document.getElementById('buyerName').value,
+nombre:
+document.getElementById('buyerName').value,
 
-telefono:document.getElementById('buyerPhone').value,
+telefono:
+document.getElementById('buyerPhone').value,
 
-email:document.getElementById('buyerEmail').value,
+email:
+document.getElementById('buyerEmail').value,
 
-zona:document.getElementById('buyerArea').value,
+zona:
+document.getElementById('buyerArea').value,
 
-tipo:document.getElementById('buyerType').value,
+tipo:
+document.getElementById('buyerType').value,
 
-presupuesto:document.getElementById('buyerBudget').value,
+presupuesto:
+document.getElementById('buyerBudget').value,
 
-habitaciones:document.getElementById('buyerRooms').value,
+habitaciones:
+document.getElementById('buyerRooms').value,
 
-banos:document.getElementById('buyerBaths').value,
+banos:
+document.getElementById('buyerBaths').value,
 
-metros:document.getElementById('buyerMeters').value,
+metros:
+document.getElementById('buyerMeters').value,
 
-estado:document.getElementById('buyerCondition').value,
+estado:
+document.getElementById('buyerCondition').value,
 
-finalidad:document.getElementById('buyerPurpose').value,
+finalidad:
+document.getElementById('buyerPurpose').value,
 
-ahorros:document.getElementById('buyerSavings').value,
+ahorros:
+document.getElementById('buyerSavings').value,
 
-ingresos:document.getElementById('buyerIncome').value,
+ingresos:
+document.getElementById('buyerIncome').value,
 
-compradores:document.getElementById('buyerPeople').value,
+compradores:
+document.getElementById('buyerPeople').value,
 
-otrosPrestamos:document.getElementById('buyerLoans').value,
+otrosPrestamos:
+document.getElementById('buyerLoans').value,
 
-financiacion:document.getElementById('buyerFinancing').value,
+financiacion:
+document.getElementById('buyerFinancing').value,
 
-estudioHipoteca:document.getElementById('buyerMortgageStudy').value,
+estudioHipoteca:
+document.getElementById('buyerMortgageStudy').value,
 
-preferencias:preferences.join(', '),
+preferencias:
+preferences.join(', '),
 
-cuandoCompra:document.getElementById('buyerWhen').value,
+cuandoCompra:
+document.getElementById('buyerWhen').value,
 
-notas:document.getElementById('buyerNotes').value,
+notas:
+document.getElementById('buyerNotes').value,
 
-consentimiento:'Sí',
+consentimiento:
+'Sí',
 
-origen:'Formulario comprador web Inmobiliaria José Caparrós'
+origen:
+'Formulario comprador web Inmobiliaria José Caparrós'
 
 };
 
-const status=document.getElementById('buyerStatus');
 
-const submitBtn=document.getElementById('buyerSubmitBtn');
+const status=
+document.getElementById('buyerStatus');
+
+const submitBtn=
+document.getElementById('buyerSubmitBtn');
+
 
 status.style.display='block';
 
-status.textContent='Enviando tus preferencias...';
+status.textContent=
+'Enviando tus preferencias...';
 
 submitBtn.disabled=true;
 
+
 try{
 
-const iframe=document.getElementById('leadSubmitFrame');
+const iframe=
+document.getElementById('leadSubmitFrame');
 
-const postForm=document.getElementById('leadPostForm');
+const postForm=
+document.getElementById('leadPostForm');
 
 postForm.innerHTML='';
+
 
 Object.entries(buyerData).forEach(function(entry){
 
 const key=entry[0];
+
 const value=entry[1];
 
-const input=document.createElement('input');
+const input=
+document.createElement('input');
 
 input.type='hidden';
+
 input.name=key;
+
 input.value=value;
 
 postForm.appendChild(input);
 
 });
 
-postForm.action=googleScriptUrl;
-postForm.target=iframe.name;
+
+postForm.action=
+googleScriptUrl;
+
+postForm.target=
+iframe.name;
 
 postForm.submit();
 
+
 status.innerHTML=`
+
 <div class="success-box">
 
 <div class="icon">✓</div>
@@ -1988,7 +2302,9 @@ Volverás al inicio en unos segundos.
 </span>
 
 </div>
+
 `;
+
 
 setTimeout(function(){
 
@@ -2004,11 +2320,16 @@ volverAlInicio();
 
 },5000);
 
+
 }catch(err){
 
-console.error('Google Apps Script:',err);
+console.error(
+'Google Apps Script:',
+err
+);
 
 status.innerHTML=`
+
 <div class="success-box">
 
 <div class="icon">✓</div>
@@ -2023,6 +2344,7 @@ Puedes contactar con nosotros directamente por WhatsApp o teléfono.
 </span>
 
 </div>
+
 `;
 
 submitBtn.disabled=false;
@@ -2031,84 +2353,128 @@ submitBtn.disabled=false;
 
 });
 
+
 /* ==========================================
    FORMULARIO DE CONTACTO
 ========================================== */
 
-const contactForm=document.getElementById('contactForm');
+const contactForm=
+document.getElementById('contactForm');
 
-const contactStatus=document.getElementById('contactStatus');
+const contactStatus=
+document.getElementById('contactStatus');
 
-const contactSubmitBtn=document.getElementById('contactSubmitBtn');
+const contactSubmitBtn=
+document.getElementById('contactSubmitBtn');
+
 
 contactForm.addEventListener('submit',function(e){
 
 e.preventDefault();
 
-const name=document.getElementById('contactName');
-const phone=document.getElementById('contactPhone');
-const email=document.getElementById('contactEmail');
-const consent=document.getElementById('contactConsent');
 
-if(!name.reportValidity()) return;
+const name=
+document.getElementById('contactName');
 
-if(!phone.reportValidity()) return;
+const phone=
+document.getElementById('contactPhone');
 
-if(!email.reportValidity()) return;
+const email=
+document.getElementById('contactEmail');
 
-if(!consent.reportValidity()) return;
+const consent=
+document.getElementById('contactConsent');
+
+
+if(!name.reportValidity())
+return;
+
+
+if(!phone.reportValidity())
+return;
+
+
+if(!email.reportValidity())
+return;
+
+
+if(!consent.reportValidity())
+return;
+
 
 const contactData={
 
-nombre:name.value,
+nombre:
+name.value,
 
-telefono:phone.value,
+telefono:
+phone.value,
 
-email:email.value,
+email:
+email.value,
 
-mensaje:document.getElementById('contactMessage').value,
+mensaje:
+document.getElementById('contactMessage').value,
 
-consentimiento:'Sí',
+consentimiento:
+'Sí',
 
-origen:'Formulario contacto web Inmobiliaria José Caparrós'
+origen:
+'Formulario contacto web Inmobiliaria José Caparrós'
 
 };
 
+
 contactStatus.style.display='block';
 
-contactStatus.textContent='Enviando tu solicitud...';
+contactStatus.textContent=
+'Enviando tu solicitud...';
 
 contactSubmitBtn.disabled=true;
 
+
 try{
 
-const iframe=document.getElementById('leadSubmitFrame');
+const iframe=
+document.getElementById('leadSubmitFrame');
 
-const postForm=document.getElementById('leadPostForm');
+const postForm=
+document.getElementById('leadPostForm');
 
 postForm.innerHTML='';
+
 
 Object.entries(contactData).forEach(function(entry){
 
 const key=entry[0];
+
 const value=entry[1];
 
-const input=document.createElement('input');
+const input=
+document.createElement('input');
 
 input.type='hidden';
+
 input.name=key;
+
 input.value=value;
 
 postForm.appendChild(input);
 
 });
 
-postForm.action=googleScriptUrl;
-postForm.target=iframe.name;
+
+postForm.action=
+googleScriptUrl;
+
+postForm.target=
+iframe.name;
 
 postForm.submit();
 
+
 contactStatus.innerHTML=`
+
 <div class="success-box">
 
 <div class="icon">✓</div>
@@ -2126,7 +2492,9 @@ Gracias por confiar en <strong>Inmobiliaria José Caparrós</strong>.
 </span>
 
 </div>
+
 `;
+
 
 setTimeout(function(){
 
@@ -2142,11 +2510,16 @@ volverAlInicio();
 
 },5000);
 
+
 }catch(err){
 
-console.error('Google Apps Script:',err);
+console.error(
+'Google Apps Script:',
+err
+);
 
 contactStatus.innerHTML=`
+
 <div class="success-box">
 
 <div class="icon">!</div>
@@ -2160,6 +2533,7 @@ Puedes contactar directamente con nosotros por WhatsApp o teléfono.
 </span>
 
 </div>
+
 `;
 
 contactSubmitBtn.disabled=false;
