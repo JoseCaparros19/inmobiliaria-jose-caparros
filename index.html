@@ -507,6 +507,7 @@ font-size:14px;
 color:var(--muted)
 }
 
+
 /* ==========================================================
    COMPARACIÓN PRECIO OBJETIVO
 ========================================================== */
@@ -547,6 +548,7 @@ color:#a56600
 .target-comparison-message.low{
 color:#596b8a
 }
+
 
 @media(max-width:800px){
 
@@ -642,6 +644,7 @@ scroll-margin-top:78px
 <span>✉️ <a href="mailto:inmobiliariajosecaparros@gmail.com">inmobiliariajosecaparros@gmail.com</a></span>
 </div>
 </div>
+
 
 <nav class="nav">
 
@@ -807,6 +810,7 @@ Primero déjanos tus datos para poder enviarte la valoración y contactar contig
 
 </p>
 
+
 <label>
 Nombre *
 </label>
@@ -863,7 +867,9 @@ Quizá más adelante
 </select>
 
 
-<!-- NUEVO: PRECIO OBJETIVO -->
+<!-- ==================================================
+     PRECIO OBJETIVO
+================================================== -->
 
 <label>
 ¿Qué precio te gustaría pedir por tu vivienda? *
@@ -873,7 +879,8 @@ Quizá más adelante
 id="leadPrice"
 type="number"
 min="1"
-step="1000"
+step="1"
+inputmode="numeric"
 placeholder="Ej. 180000 €"
 required
 >
@@ -1183,7 +1190,9 @@ style="margin-top:8px"
 ></div>
 
 
-<!-- NUEVO: COMPARACIÓN CON PRECIO OBJETIVO -->
+<!-- ==================================================
+     COMPARACIÓN PRECIO OBJETIVO
+================================================== -->
 
 <div
 id="targetComparison"
@@ -2985,7 +2994,7 @@ const vender=
 document.getElementById('leadSelling').value;
 
 
-/* NUEVO: PRECIO OBJETIVO */
+/* PRECIO OBJETIVO */
 
 const precioObjetivo=
 document.getElementById('leadPrice').value;
@@ -3132,7 +3141,7 @@ if(!email.reportValidity())
 return;
 
 
-/* NUEVO: VALIDAR PRECIO OBJETIVO */
+/* VALIDAR PRECIO OBJETIVO */
 
 if(!leadPrice.reportValidity())
 return;
@@ -3228,7 +3237,7 @@ const condition=
 document.getElementById('condition').value;
 
 
-/* NUEVO: PRECIO OBJETIVO */
+/* PRECIO OBJETIVO */
 
 const precioObjetivo=
 Number(
@@ -3243,6 +3252,17 @@ document.getElementById('sqm').reportValidity();
 document.getElementById('municipio').reportValidity();
 
 document.getElementById('area').reportValidity();
+
+return;
+
+}
+
+
+/* COMPROBAR PRECIO */
+
+if(!precioObjetivo || precioObjetivo<1){
+
+document.getElementById('leadPrice').reportValidity();
 
 return;
 
@@ -3386,7 +3406,7 @@ if(precioObjetivo>high){
 
 targetMessageElement.classList.add('high');
 
-targetMessageElement.innerHTML=
+targetMessageElement.textContent=
 
 '⚠️ Tu precio objetivo está por encima del rango estimado. '+
 'Has indicado '+
@@ -3404,7 +3424,7 @@ else if(precioObjetivo<low){
 
 targetMessageElement.classList.add('low');
 
-targetMessageElement.innerHTML=
+targetMessageElement.textContent=
 
 'ℹ️ Tu precio objetivo está por debajo del rango estimado. '+
 'Has indicado '+
@@ -3422,7 +3442,7 @@ else{
 
 targetMessageElement.classList.add('good');
 
-targetMessageElement.innerHTML=
+targetMessageElement.textContent=
 
 '✅ Tu precio objetivo está dentro del rango estimado. '+
 'Has indicado '+
@@ -3522,8 +3542,6 @@ baths,
 
 estado:
 condition,
-
-/* NUEVO */
 
 precioObjetivo:
 precioObjetivo,
