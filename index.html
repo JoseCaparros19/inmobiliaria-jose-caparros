@@ -1,3 +1,4 @@
+```html
 <!doctype html>
 <html lang="es">
 <head>
@@ -1355,27 +1356,35 @@ inmobiliariajosecaparros@gmail.com
 Solicita una valoración personalizada
 </h3>
 
-<form onsubmit="event.preventDefault();alert('Formulario de demostración. Conectaremos aquí el envío real de leads.');">
+<form id="contactForm">
 
-<label>Nombre</label>
-<input required placeholder="Tu nombre">
+<label>Nombre *</label>
+<input id="contactName" type="text" placeholder="Tu nombre" required>
 
-<label>Teléfono</label>
-<input required placeholder="Tu teléfono">
+<label>Teléfono *</label>
+<input id="contactPhone" type="tel" placeholder="Tu teléfono" required>
 
 <label>Email</label>
-<input type="email" placeholder="tu@email.com">
+<input id="contactEmail" type="email" placeholder="tu@email.com">
 
 <label>Mensaje</label>
-<input placeholder="Cuéntanos brevemente tu vivienda">
+<input id="contactMessage" type="text" placeholder="Cuéntanos brevemente tu vivienda">
 
-<button class="btn primary" type="submit" style="width:100%;margin-top:18px">
+<label style="display:flex;gap:8px;align-items:flex-start;font-weight:500">
+
+<input id="contactConsent" type="checkbox" style="width:auto;margin-top:3px" required>
+
+<span>
+Acepto el tratamiento de mis datos para gestionar mi solicitud y contactar conmigo. *
+</span>
+
+</label>
+
+<button class="btn primary" type="submit" id="contactSubmitBtn" style="width:100%;margin-top:18px">
 SOLICITAR CONTACTO
 </button>
 
-<div class="notice">
-Este formulario de contacto general todavía no está conectado. El valorador sí guarda los leads en Google Sheets.
-</div>
+<div id="contactStatus" class="notice" style="display:none;margin-top:12px"></div>
 
 </form>
 
@@ -1982,7 +1991,158 @@ submitBtn.disabled=false;
 
 });
 
+
+/* ==========================================
+   FORMULARIO DE CONTACTO
+========================================== */
+
+const contactForm=document.getElementById('contactForm');
+
+const contactStatus=document.getElementById('contactStatus');
+
+const contactSubmitBtn=document.getElementById('contactSubmitBtn');
+
+
+contactForm.addEventListener('submit',function(e){
+
+e.preventDefault();
+
+
+const name=document.getElementById('contactName');
+const phone=document.getElementById('contactPhone');
+const email=document.getElementById('contactEmail');
+const consent=document.getElementById('contactConsent');
+
+
+if(!name.reportValidity()) return;
+
+if(!phone.reportValidity()) return;
+
+if(!email.reportValidity()) return;
+
+if(!consent.reportValidity()) return;
+
+
+const contactData={
+
+nombre:name.value,
+
+telefono:phone.value,
+
+email:email.value,
+
+mensaje:document.getElementById('contactMessage').value,
+
+consentimiento:'Sí',
+
+origen:'Formulario contacto web Inmobiliaria José Caparrós'
+
+};
+
+
+contactStatus.style.display='block';
+
+contactStatus.textContent='Enviando tu solicitud...';
+
+contactSubmitBtn.disabled=true;
+
+
+try{
+
+const iframe=document.getElementById('leadSubmitFrame');
+
+const postForm=document.getElementById('leadPostForm');
+
+
+postForm.innerHTML='';
+
+
+Object.entries(contactData).forEach(function(entry){
+
+const key=entry[0];
+const value=entry[1];
+
+const input=document.createElement('input');
+
+input.type='hidden';
+input.name=key;
+input.value=value;
+
+postForm.appendChild(input);
+
+});
+
+
+postForm.action=googleScriptUrl;
+postForm.target=iframe.name;
+
+postForm.submit();
+
+
+contactStatus.innerHTML=`
+<div class="success-box">
+
+<div class="icon">✓</div>
+
+<strong>
+¡Solicitud recibida!
+</strong>
+
+<span>
+Hemos recibido correctamente tus datos.
+<br>
+En breve nos pondremos en contacto contigo para realizar una <strong>valoración personalizada de tu vivienda</strong> y comentar contigo su posible valor de mercado.
+<br>
+Gracias por confiar en <strong>Inmobiliaria José Caparrós</strong>.
+</span>
+
+</div>
+`;
+
+
+setTimeout(function(){
+
+contactForm.reset();
+
+contactStatus.style.display='none';
+
+contactStatus.innerHTML='';
+
+contactSubmitBtn.disabled=false;
+
+volverAlInicio();
+
+},5000);
+
+
+}catch(err){
+
+console.error('Google Apps Script:',err);
+
+contactStatus.innerHTML=`
+<div class="success-box">
+
+<div class="icon">✓</div>
+
+<strong>
+No hemos podido confirmar el envío
+</strong>
+
+<span>
+Puedes contactar directamente con nosotros por WhatsApp o teléfono.
+</span>
+
+</div>
+`;
+
+contactSubmitBtn.disabled=false;
+
+}
+
+});
+
 </script>
 
 </body>
 </html>
+```
