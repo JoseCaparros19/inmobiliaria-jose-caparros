@@ -1469,6 +1469,12 @@ const googleScriptUrl='https://script.google.com/macros/s/AKfycby-4dIfxIPyuT6EE-
 const siteUrl='https://josecaparros19.github.io/inmobiliaria-jose-caparros/';
 
 /* ==========================================
+   VARIABLES DEL LEAD
+========================================== */
+
+let leadCreated=false;
+
+/* ==========================================
    FUNCIÓN PARA VOLVER AL INICIO
 ========================================== */
 
@@ -1488,23 +1494,158 @@ window.location.hash='inicio';
 }
 
 /* ==========================================
+   FUNCIÓN PARA ENVIAR LEAD
+   AHORA SE EJECUTA EN EL PRIMER PASO
+========================================== */
+
+function crearLeadInicial(){
+
+const nombre=document.getElementById('leadName').value;
+const telefono=document.getElementById('leadPhone').value;
+const email=document.getElementById('leadEmail').value;
+const vender=document.getElementById('leadSelling').value;
+
+const data={
+
+nombre:nombre,
+
+telefono:telefono,
+
+email:email,
+
+consentimiento:'Sí',
+
+vender:vender,
+
+pagina:siteUrl,
+
+origen:'Valorador web Inmobiliaria José Caparrós',
+
+tipoLead:'Vendedor - Primer paso valorador',
+
+estadoLead:'Lead generado - pendiente de valoración'
+
+};
+
+leadStatus.style.display='block';
+
+leadStatus.textContent='Guardando tus datos...';
+
+continueBtn.disabled=true;
+
+try{
+
+const iframe=document.getElementById('leadSubmitFrame');
+
+const postForm=document.getElementById('leadPostForm');
+
+postForm.innerHTML='';
+
+Object.entries(data).forEach(function(entry){
+
+const key=entry[0];
+const value=entry[1];
+
+const input=document.createElement('input');
+
+input.type='hidden';
+input.name=key;
+input.value=value;
+
+postForm.appendChild(input);
+
+});
+
+postForm.action=googleScriptUrl;
+
+postForm.target=iframe.name;
+
+postForm.submit();
+
+/*
+   IMPORTANTE:
+   El lead se considera creado una vez realizado
+   el envío del formulario oculto.
+*/
+
+leadCreated=true;
+
+/* Meta Pixel - Lead */
+fbq('track','Lead');
+
+/* Pasar al segundo paso */
+
+document.getElementById('step1').style.display='none';
+document.getElementById('step2').style.display='block';
+
+leadStatus.style.display='none';
+
+continueBtn.disabled=false;
+
+}catch(err){
+
+console.error('Google Apps Script:',err);
+
+leadStatus.innerHTML=`
+<div class="success-box">
+
+<div class="icon">!</div>
+
+<strong>
+No hemos podido guardar tus datos
+</strong>
+
+<span>
+Comprueba tu conexión e inténtalo de nuevo.
+</span>
+
+</div>
+`;
+
+continueBtn.disabled=false;
+
+}
+
+}
+
+/* ==========================================
    PASO 1 VALORACIÓN
+   AQUÍ SE CREA EL LEAD
 ========================================== */
 
 continueBtn.addEventListener('click',function(){
 
 const name=document.getElementById('leadName');
 const phone=document.getElementById('leadPhone');
+const email=document.getElementById('leadEmail');
 const consent=document.getElementById('consent');
 
 if(!name.reportValidity()) return;
 
 if(!phone.reportValidity()) return;
 
+if(!email.reportValidity()) return;
+
 if(!consent.reportValidity()) return;
+
+/*
+   EVITAR DUPLICADOS
+*/
+
+if(leadCreated){
 
 document.getElementById('step1').style.display='none';
 document.getElementById('step2').style.display='block';
+
+return;
+
+}
+
+/*
+   CREAR LEAD AHORA
+*/
+
+crearLeadInicial();
 
 });
 
@@ -1599,6 +1740,13 @@ block:'start'
 
 },80);
 
+/*
+   AQUÍ YA NO CREAMOS EL LEAD.
+
+   El lead se creó anteriormente en el PRIMER PASO.
+   Por tanto, aquí solamente mostramos la valoración.
+*/
+
 const data={
 
 nombre:document.getElementById('leadName').value,
@@ -1606,10 +1754,6 @@ nombre:document.getElementById('leadName').value,
 telefono:document.getElementById('leadPhone').value,
 
 email:document.getElementById('leadEmail').value,
-
-consentimiento:'Sí',
-
-vender:document.getElementById('leadSelling').value,
 
 zona:zone.name,
 
@@ -1627,75 +1771,13 @@ valoracion:
 low.toLocaleString('es-ES')+
 ' € - '+
 high.toLocaleString('es-ES')+
-' €',
-
-pagina:siteUrl,
-
-origen:'Valorador web Inmobiliaria José Caparrós'
+' €'
 
 };
 
-leadStatus.style.display='block';
-
-leadStatus.textContent='Guardando tus datos...';
-
-const submitBtn=document.getElementById('valuationSubmitBtn');
-
-submitBtn.disabled=true;
-
-try{
-
-const iframe=document.getElementById('leadSubmitFrame');
-
-const postForm=document.getElementById('leadPostForm');
-
-postForm.innerHTML='';
-
-Object.entries(data).forEach(function(entry){
-
-const key=entry[0];
-const value=entry[1];
-
-const input=document.createElement('input');
-
-input.type='hidden';
-input.name=key;
-input.value=value;
-
-postForm.appendChild(input);
-
-});
-
-postForm.action=googleScriptUrl;
-
-postForm.target=iframe.name;
-
-postForm.submit();
-
-/* Meta Pixel - Lead */
-fbq('track', 'Lead');
-
-leadStatus.innerHTML=`
-<div class="success-box">
-
-<div class="icon">✓</div>
-
-<strong>
-¡Valoración recibida!
-</strong>
-
-<span>
-Hemos recibido tus datos correctamente.
-<br>
-Gracias por confiar en Inmobiliaria José Caparrós.
-<br>
-Volverás al inicio en unos segundos.
-</span>
-
-</div>
-`;
-
-/* WhatsApp */
+/*
+   WhatsApp
+*/
 
 const msg=encodeURIComponent(
 'Hola, soy '+
@@ -1712,7 +1794,35 @@ data.telefono+
 document.getElementById('resultWhatsapp').href=
 'https://wa.me/34611668768?text='+msg;
 
-/* VOLVER AL INICIO */
+/*
+   MENSAJE FINAL
+*/
+
+leadStatus.style.display='block';
+
+leadStatus.innerHTML=`
+<div class="success-box">
+
+<div class="icon">✓</div>
+
+<strong>
+¡Valoración recibida!
+</strong>
+
+<span>
+Hemos recibido tus datos correctamente.
+<br>
+Gracias por confiar en Inmobiliaria José Caparrós.
+<br>
+Si quieres, puedes contactar directamente con nosotros para una valoración personalizada.
+</span>
+
+</div>
+`;
+
+/*
+   VOLVER AL INICIO
+*/
 
 setTimeout(function(){
 
@@ -1726,36 +1836,11 @@ resultBox.classList.remove('visible');
 
 leadStatus.style.display='none';
 
-submitBtn.disabled=false;
+leadCreated=false;
 
 volverAlInicio();
 
 },5000);
-
-}catch(err){
-
-console.error('Google Apps Script:',err);
-
-leadStatus.innerHTML=`
-<div class="success-box">
-
-<div class="icon">✓</div>
-
-<strong>
-La valoración está disponible
-</strong>
-
-<span>
-No hemos podido confirmar el guardado automático de los datos.
-Puedes continuar utilizando la web o contactar directamente con nosotros.
-</span>
-
-</div>
-`;
-
-submitBtn.disabled=false;
-
-}
 
 });
 
@@ -1770,8 +1855,6 @@ buyerForm.addEventListener('submit',function(e){
 e.preventDefault();
 
 const consent=document.getElementById('buyerConsent');
-
-/* Comprobar campos obligatorios */
 
 if(!document.getElementById('buyerName').reportValidity()) return;
 
@@ -1859,8 +1942,6 @@ status.textContent='Enviando tus preferencias...';
 
 submitBtn.disabled=true;
 
-/* Enviar comprador a Google Sheets */
-
 try{
 
 const iframe=document.getElementById('leadSubmitFrame');
@@ -1889,8 +1970,6 @@ postForm.target=iframe.name;
 
 postForm.submit();
 
-/* Mensaje de confirmación */
-
 status.innerHTML=`
 <div class="success-box">
 
@@ -1910,8 +1989,6 @@ Volverás al inicio en unos segundos.
 
 </div>
 `;
-
-/* Volver al inicio */
 
 setTimeout(function(){
 
@@ -2072,7 +2149,7 @@ console.error('Google Apps Script:',err);
 contactStatus.innerHTML=`
 <div class="success-box">
 
-<div class="icon">✓</div>
+<div class="icon">!</div>
 
 <strong>
 No hemos podido confirmar el envío
