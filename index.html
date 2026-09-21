@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="es">
 <head>
@@ -6,6 +5,24 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Inmobiliaria José Caparrós. Venta, compra, alquiler y valoración de viviendas en Almería y provincia.">
 <title>Inmobiliaria José Caparrós | Almería</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1568962948363999');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1568962948363999&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
 <style>
 :root{
@@ -662,7 +679,6 @@ QUIERO COMPRAR
 </div>
 </header>
 
-
 <!-- VALORACIÓN / VENDEDORES -->
 
 <section id="valoracion" class="section soft">
@@ -699,7 +715,6 @@ Introduce las características básicas de tu vivienda y obtén una primera esti
 </div>
 
 </div>
-
 
 <div class="formbox">
 
@@ -755,7 +770,6 @@ CONTINUAR CON LA VALORACIÓN
 </button>
 
 </div>
-
 
 <div id="step2" style="display:none">
 
@@ -839,7 +853,6 @@ CALCULAR ESTIMACIÓN
 
 </div>
 
-
 <div id="result" class="result">
 
 <div class="result-title">
@@ -888,7 +901,6 @@ QUIERO UNA VALORACIÓN PERSONALIZADA
 </div>
 </section>
 
-
 <!-- VENDER -->
 
 <section id="vender" class="section">
@@ -930,7 +942,6 @@ Coordinamos visitas, negociación, documentación y el proceso hasta notaría.
 
 </div>
 </section>
-
 
 <!-- COMPRAR -->
 
@@ -1163,7 +1174,6 @@ QUIERO RECIBIR VIVIENDAS
 
 </section>
 
-
 <!-- POR QUÉ NOSOTROS -->
 
 <section class="section soft">
@@ -1206,7 +1216,6 @@ Una condición clara que facilita la comercialización de tus propiedades.
 </div>
 </section>
 
-
 <!-- PROPIEDADES -->
 
 <section id="propiedades" class="section">
@@ -1239,7 +1248,6 @@ VER TODAS LAS PROPIEDADES
 
 </div>
 </section>
-
 
 <!-- RESEÑAS -->
 
@@ -1274,7 +1282,6 @@ VER RESEÑAS
 </div>
 </section>
 
-
 <!-- CTA -->
 
 <section class="section cta">
@@ -1295,7 +1302,6 @@ VALORA TU VIVIENDA
 
 </div>
 </section>
-
 
 <!-- CONTACTO -->
 
@@ -1349,7 +1355,6 @@ inmobiliariajosecaparros@gmail.com
 
 </div>
 
-
 <div class="formbox">
 
 <h3 style="margin-top:0">
@@ -1394,11 +1399,9 @@ SOLICITAR CONTACTO
 
 </section>
 
-
 <a class="whatsapp-float" href="https://wa.me/34611668768?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20vivienda%20y%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
 💬 WhatsApp
 </a>
-
 
 <footer class="footer">
 
@@ -1418,7 +1421,6 @@ Venta · Compra · Alquiler · Valoraciones
 </div>
 
 </footer>
-
 
 <script>
 
@@ -1463,7 +1465,6 @@ const googleScriptUrl='https://script.google.com/macros/s/AKfycby-4dIfxIPyuT6EE-
 
 const siteUrl='https://josecaparros19.github.io/inmobiliaria-jose-caparros/';
 
-
 /* ==========================================
    FUNCIÓN PARA VOLVER AL INICIO
 ========================================== */
@@ -1482,7 +1483,6 @@ window.location.hash='inicio';
 },500);
 
 }
-
 
 /* ==========================================
    PASO 1 VALORACIÓN
@@ -1505,7 +1505,6 @@ document.getElementById('step2').style.display='block';
 
 });
 
-
 /* ==========================================
    VOLVER AL PASO ANTERIOR
 ========================================== */
@@ -1517,7 +1516,6 @@ document.getElementById('step1').style.display='block';
 
 });
 
-
 /* ==========================================
    FORMULARIO DE VALORACIÓN
 ========================================== */
@@ -1526,7 +1524,6 @@ form.addEventListener('submit',function(e){
 
 e.preventDefault();
 
-
 const sqm=Number(document.getElementById('sqm').value)||0;
 const rooms=Number(document.getElementById('rooms').value)||0;
 const baths=Number(document.getElementById('baths').value)||0;
@@ -1534,7 +1531,6 @@ const baths=Number(document.getElementById('baths').value)||0;
 const type=document.getElementById('type').value;
 const area=document.getElementById('area').value;
 const condition=document.getElementById('condition').value;
-
 
 if(!sqm || !area){
 
@@ -1545,21 +1541,17 @@ return;
 
 }
 
-
 const zone=zonePrices[area]||zonePrices.general;
-
 
 let priceM2=
 zone.price*
 (typeFactor[type]||1)*
 (conditionFactor[condition]||1);
 
-
 priceM2*=
 1+
 Math.min(Math.max(rooms-2,0),3)*.012+
 Math.min(Math.max(baths-1,0),2)*.008;
-
 
 const center=Math.round((sqm*priceM2)/1000)*1000;
 
@@ -1567,19 +1559,16 @@ const low=Math.round(center*.94/1000)*1000;
 
 const high=Math.round(center*1.06/1000)*1000;
 
-
 document.getElementById('range').textContent=
 low.toLocaleString('es-ES')+
 ' € – '+
 high.toLocaleString('es-ES')+
 ' €';
 
-
 document.getElementById('zoneRef').textContent=
 'Referencia de la zona: '+
 zone.price.toLocaleString('es-ES')+
 ' €/m² (agosto de 2026).';
-
 
 const ex=[70,90,110].map(function(m){
 
@@ -1591,15 +1580,12 @@ Math.round((m*zone.price)/1000).toLocaleString('es-ES')+
 
 }).join('');
 
-
 document.getElementById('examples').innerHTML=ex;
-
 
 const resultBox=document.getElementById('result');
 
 resultBox.style.display='block';
 resultBox.classList.add('visible');
-
 
 setTimeout(function(){
 
@@ -1609,7 +1595,6 @@ block:'start'
 });
 
 },80);
-
 
 const data={
 
@@ -1647,16 +1632,13 @@ origen:'Valorador web Inmobiliaria José Caparrós'
 
 };
 
-
 leadStatus.style.display='block';
 
 leadStatus.textContent='Guardando tus datos...';
 
-
 const submitBtn=document.getElementById('valuationSubmitBtn');
 
 submitBtn.disabled=true;
-
 
 try{
 
@@ -1665,7 +1647,6 @@ const iframe=document.getElementById('leadSubmitFrame');
 const postForm=document.getElementById('leadPostForm');
 
 postForm.innerHTML='';
-
 
 Object.entries(data).forEach(function(entry){
 
@@ -1682,12 +1663,11 @@ postForm.appendChild(input);
 
 });
 
-
 postForm.action=googleScriptUrl;
+
 postForm.target=iframe.name;
 
 postForm.submit();
-
 
 leadStatus.innerHTML=`
 <div class="success-box">
@@ -1709,7 +1689,6 @@ Volverás al inicio en unos segundos.
 </div>
 `;
 
-
 /* WhatsApp */
 
 const msg=encodeURIComponent(
@@ -1724,10 +1703,8 @@ data.telefono+
 '. Me gustaría hablar sobre una valoración personalizada.'
 );
 
-
 document.getElementById('resultWhatsapp').href=
 'https://wa.me/34611668768?text='+msg;
-
 
 /* VOLVER AL INICIO */
 
@@ -1748,7 +1725,6 @@ submitBtn.disabled=false;
 volverAlInicio();
 
 },5000);
-
 
 }catch(err){
 
@@ -1777,21 +1753,17 @@ submitBtn.disabled=false;
 
 });
 
-
 /* ==========================================
    FORMULARIO DE COMPRADORES
 ========================================== */
 
 const buyerForm=document.getElementById('buyerForm');
 
-
 buyerForm.addEventListener('submit',function(e){
 
 e.preventDefault();
 
-
 const consent=document.getElementById('buyerConsent');
-
 
 /* Comprobar campos obligatorios */
 
@@ -1809,25 +1781,19 @@ if(!document.getElementById('buyerIncome').reportValidity()) return;
 
 if(!consent.reportValidity()) return;
 
-
 const preferences=[];
-
 
 if(document.getElementById('buyerElevator').checked)
 preferences.push('Ascensor');
 
-
 if(document.getElementById('buyerGarage').checked)
 preferences.push('Garaje');
-
 
 if(document.getElementById('buyerTerrace').checked)
 preferences.push('Terraza');
 
-
 if(document.getElementById('buyerExterior').checked)
 preferences.push('Exterior');
-
 
 const buyerData={
 
@@ -1877,18 +1843,15 @@ origen:'Formulario comprador web Inmobiliaria José Caparrós'
 
 };
 
-
 const status=document.getElementById('buyerStatus');
 
 const submitBtn=document.getElementById('buyerSubmitBtn');
-
 
 status.style.display='block';
 
 status.textContent='Enviando tus preferencias...';
 
 submitBtn.disabled=true;
-
 
 /* Enviar comprador a Google Sheets */
 
@@ -1898,9 +1861,7 @@ const iframe=document.getElementById('leadSubmitFrame');
 
 const postForm=document.getElementById('leadPostForm');
 
-
 postForm.innerHTML='';
-
 
 Object.entries(buyerData).forEach(function(entry){
 
@@ -1917,12 +1878,10 @@ postForm.appendChild(input);
 
 });
 
-
 postForm.action=googleScriptUrl;
 postForm.target=iframe.name;
 
 postForm.submit();
-
 
 /* Mensaje de confirmación */
 
@@ -1946,7 +1905,6 @@ Volverás al inicio en unos segundos.
 </div>
 `;
 
-
 /* Volver al inicio */
 
 setTimeout(function(){
@@ -1962,7 +1920,6 @@ submitBtn.disabled=false;
 volverAlInicio();
 
 },5000);
-
 
 }catch(err){
 
@@ -1991,7 +1948,6 @@ submitBtn.disabled=false;
 
 });
 
-
 /* ==========================================
    FORMULARIO DE CONTACTO
 ========================================== */
@@ -2002,17 +1958,14 @@ const contactStatus=document.getElementById('contactStatus');
 
 const contactSubmitBtn=document.getElementById('contactSubmitBtn');
 
-
 contactForm.addEventListener('submit',function(e){
 
 e.preventDefault();
-
 
 const name=document.getElementById('contactName');
 const phone=document.getElementById('contactPhone');
 const email=document.getElementById('contactEmail');
 const consent=document.getElementById('contactConsent');
-
 
 if(!name.reportValidity()) return;
 
@@ -2021,7 +1974,6 @@ if(!phone.reportValidity()) return;
 if(!email.reportValidity()) return;
 
 if(!consent.reportValidity()) return;
-
 
 const contactData={
 
@@ -2039,13 +1991,11 @@ origen:'Formulario contacto web Inmobiliaria José Caparrós'
 
 };
 
-
 contactStatus.style.display='block';
 
 contactStatus.textContent='Enviando tu solicitud...';
 
 contactSubmitBtn.disabled=true;
-
 
 try{
 
@@ -2053,9 +2003,7 @@ const iframe=document.getElementById('leadSubmitFrame');
 
 const postForm=document.getElementById('leadPostForm');
 
-
 postForm.innerHTML='';
-
 
 Object.entries(contactData).forEach(function(entry){
 
@@ -2072,12 +2020,10 @@ postForm.appendChild(input);
 
 });
 
-
 postForm.action=googleScriptUrl;
 postForm.target=iframe.name;
 
 postForm.submit();
-
 
 contactStatus.innerHTML=`
 <div class="success-box">
@@ -2099,7 +2045,6 @@ Gracias por confiar en <strong>Inmobiliaria José Caparrós</strong>.
 </div>
 `;
 
-
 setTimeout(function(){
 
 contactForm.reset();
@@ -2113,7 +2058,6 @@ contactSubmitBtn.disabled=false;
 volverAlInicio();
 
 },5000);
-
 
 }catch(err){
 
@@ -2145,20 +2089,3 @@ contactSubmitBtn.disabled=false;
 
 </body>
 </html>
-```<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1568962948363999');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1568962948363999&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
