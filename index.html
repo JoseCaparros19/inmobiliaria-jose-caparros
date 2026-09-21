@@ -75,7 +75,7 @@ const form=document.getElementById('valuationForm');
 const continueBtn=document.getElementById('continueBtn');
 const backBtn=document.getElementById('backBtn');
 const leadStatus=document.getElementById('leadStatus');
-const googleScriptUrl='https://script.google.com/macros/s/AKfycbzlN0U0IWnwUc0uhhYRJ56l8n9htGfmzm41J_uzozhLtQFmGNC13Ph3rribSs7JhTw7/exec';
+const googleScriptUrl='https://script.google.com/macros/s/AKfycby-4dIfxIPyuT6EE-aRK4pot5CNbMY8q1tXer2pyVKJRq-Mu6L3KOvqWLq-Mvbf2cvp/exec';
 const siteUrl='https://josecaparros19.github.io/inmobiliaria-jose-caparros/';
 continueBtn.addEventListener('click',()=>{
  const name=document.getElementById('leadName'), phone=document.getElementById('leadPhone'), consent=document.getElementById('consent');
@@ -105,14 +105,14 @@ form.addEventListener('submit',async function(e){
    phone:document.getElementById('leadPhone').value,
    email:document.getElementById('leadEmail').value,
    consentimiento:'Sí',
-   pensando_en_vender:document.getElementById('leadSelling').value,
-   tipo_inmueble:type,
+   vender:document.getElementById('leadSelling').value,
+   tipo:type,
    metros:sqm,
    habitaciones:rooms,
    banos:baths,
    zona:zone.name,
    estado:condition,
-   estimacion:low.toLocaleString('es-ES')+' € - '+high.toLocaleString('es-ES')+' €',
+   valoracion:low.toLocaleString('es-ES')+' € - '+high.toLocaleString('es-ES')+' €',
    pagina:siteUrl,
    origen:'Valorador web Inmobiliaria José Caparrós'
  };
