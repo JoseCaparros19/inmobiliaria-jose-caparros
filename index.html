@@ -22,12 +22,12 @@ fbq('track', 'PageView');
 
 <noscript>
 <img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1568962948363999&ev=PageView&noscript=1"
-/>
+src="https://www.facebook.com/tr?id=1568962948363999&ev=PageView&noscript=1"/>
 </noscript>
 <!-- End Meta Pixel Code -->
 
 <style>
+
 :root{
 --ink:#17202a;
 --muted:#66717c;
@@ -38,7 +38,9 @@ src="https://www.facebook.com/tr?id=1568962948363999&ev=PageView&noscript=1"
 --dark:#12171c
 }
 
-*{box-sizing:border-box}
+*{
+box-sizing:border-box
+}
 
 html{
 scroll-behavior:smooth
@@ -55,17 +57,6 @@ line-height:1.55
 a{
 text-decoration:none;
 color:inherit
-}
-
-.top a:hover,
-.contactitem a:hover,
-.footer a:hover{
-opacity:.8
-}
-
-.container{
-width:min(1120px,92%);
-margin:auto
 }
 
 .top{
@@ -87,6 +78,11 @@ top:0;
 z-index:10;
 background:#dceee3;
 border-bottom:1px solid #c9ddd0
+}
+
+.container{
+width:min(1120px,92%);
+margin:auto
 }
 
 .navin{
@@ -262,7 +258,8 @@ font-weight:700;
 margin:14px 0 6px
 }
 
-input,select{
+input,
+select{
 width:100%;
 padding:12px 13px;
 border:1px solid #d8d2c9;
@@ -290,18 +287,20 @@ background:#f4efe7;
 border-left:4px solid var(--accent)
 }
 
+.result.visible{
+display:block
+}
+
 .result strong{
 font-size:22px;
 display:block;
 margin-top:3px
 }
 
-.result.visible{
-display:block
-}
-
-.result .notice{
-line-height:1.45
+.notice{
+font-size:12px;
+color:var(--muted);
+margin-top:10px
 }
 
 .examples{
@@ -407,12 +406,6 @@ color:#aeb5bc
 display:none
 }
 
-.notice{
-font-size:12px;
-color:var(--muted);
-margin-top:10px
-}
-
 .whatsapp-float{
 position:fixed;
 right:22px;
@@ -428,10 +421,6 @@ box-shadow:0 10px 28px rgba(0,0,0,.22);
 display:flex;
 align-items:center;
 gap:8px
-}
-
-.whatsapp-float:hover{
-transform:translateY(-2px)
 }
 
 .reviewbox{
@@ -452,13 +441,6 @@ color:var(--muted);
 max-width:700px;
 margin:12px auto 22px
 }
-
-.property-cta{
-text-align:center;
-margin-top:28px
-}
-
-/* COMPRADORES */
 
 .buyer-section{
 background:#f7f5f1
@@ -500,8 +482,6 @@ font-size:13px
 .buyer-check input{
 width:auto
 }
-
-/* MENSAJE FINAL */
 
 .success-box{
 margin-top:20px;
@@ -585,10 +565,7 @@ padding:12px 15px;
 font-size:13px
 }
 
-.formbox{
-padding:20px
-}
-
+.formbox,
 .buyerbox{
 padding:20px
 }
@@ -605,14 +582,13 @@ padding:18px
 font-size:21px
 }
 
-.section#valoracion{
-scroll-margin-top:78px
-}
-
+.section#valoracion,
 .section#comprar{
 scroll-margin-top:78px
 }
+
 }
+
 </style>
 </head>
 
@@ -627,6 +603,7 @@ scroll-margin-top:78px
 </div>
 
 <nav class="nav">
+
 <div class="container navin">
 
 <a class="brand" href="#inicio">
@@ -635,6 +612,7 @@ Inmobiliaria José Caparrós
 </a>
 
 <div class="links">
+
 <a href="#inicio">Inicio</a>
 <a href="#vender">Vender</a>
 <a href="#comprar">Comprar</a>
@@ -642,22 +620,41 @@ Inmobiliaria José Caparrós
 <a href="#resenas">Reseñas</a>
 <a href="#valoracion">Valoración</a>
 <a href="#contacto">Contacto</a>
-<a class="btn primary" href="#valoracion">VALORA TU VIVIENDA</a>
+
+<a class="btn primary" href="#valoracion">
+VALORA TU VIVIENDA
+</a>
+
 </div>
 
 <div class="mobile">
-<a class="btn primary" href="#valoracion">VALORAR</a>
+
+<a class="btn primary" href="#valoracion">
+VALORAR
+</a>
+
 </div>
 
 </div>
+
 </nav>
 
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
 <header id="inicio" class="hero">
+
 <div class="container">
 
-<div class="tag">Inmobiliaria en Almería</div>
+<div class="tag">
+Inmobiliaria en Almería
+</div>
 
-<h1>¿Cuánto vale tu vivienda?</h1>
+<h1>
+¿Cuánto vale tu vivienda?
+</h1>
 
 <p>
 Descubre una estimación orientativa de su valor y conoce cómo podemos ayudarte a venderla.
@@ -680,9 +677,13 @@ QUIERO COMPRAR
 </div>
 
 </div>
+
 </header>
 
-<!-- VALORACIÓN / VENDEDORES -->
+
+<!-- ======================================================
+     VALORACIÓN
+====================================================== -->
 
 <section id="valoracion" class="section soft">
 
@@ -690,9 +691,13 @@ QUIERO COMPRAR
 
 <div>
 
-<div class="eyebrow">Valoración gratuita</div>
+<div class="eyebrow">
+Valoración gratuita
+</div>
 
-<h2>Conoce el valor de tu vivienda</h2>
+<h2>
+Conoce el valor de tu vivienda
+</h2>
 
 <p class="lead">
 Introduce las características básicas de tu vivienda y obtén una primera estimación orientativa ajustada a la zona. Después podrás solicitar una valoración personalizada.
@@ -701,23 +706,45 @@ Introduce las características básicas de tu vivienda y obtén una primera esti
 <div class="grid3">
 
 <div class="card">
-<h3>01 · Cuéntanos</h3>
-<p>Tipo, zona, metros, habitaciones y características.</p>
+
+<h3>
+01 · Cuéntanos
+</h3>
+
+<p>
+Tipo, zona, metros, habitaciones y características.
+</p>
+
 </div>
 
 <div class="card">
-<h3>02 · Estimamos</h3>
-<p>Calculamos un rango orientativo con los datos introducidos.</p>
+
+<h3>
+02 · Estimamos
+</h3>
+
+<p>
+Calculamos un rango orientativo con los datos introducidos.
+</p>
+
 </div>
 
 <div class="card">
-<h3>03 · Te contactamos</h3>
-<p>Si quieres, analizamos tu vivienda personalmente.</p>
-</div>
+
+<h3>
+03 · Te contactamos
+</h3>
+
+<p>
+Si quieres, analizamos tu vivienda personalmente.
+</p>
 
 </div>
 
 </div>
+
+</div>
+
 
 <div class="formbox">
 
@@ -725,28 +752,64 @@ Introduce las características básicas de tu vivienda y obtén una primera esti
 Valora tu vivienda gratis
 </h3>
 
+
 <form id="valuationForm">
+
+
+<!-- PASO 1 -->
 
 <div id="step1">
 
 <p class="lead" style="font-size:14px">
+
 Primero déjanos tus datos para poder enviarte la valoración y contactar contigo si estás pensando en vender.
+
 </p>
 
-<label>Nombre *</label>
-<input id="leadName" type="text" placeholder="Tu nombre" required>
+<label>
+Nombre *
+</label>
 
-<label>Teléfono *</label>
-<input id="leadPhone" type="tel" placeholder="611 668 768" required>
+<input
+id="leadName"
+type="text"
+placeholder="Tu nombre"
+required
+>
 
-<label>Email</label>
-<input id="leadEmail" type="email" placeholder="tu@email.com">
 
-<label>¿Estás pensando en vender?</label>
+<label>
+Teléfono *
+</label>
+
+<input
+id="leadPhone"
+type="tel"
+placeholder="611 668 768"
+required
+>
+
+
+<label>
+Email
+</label>
+
+<input
+id="leadEmail"
+type="email"
+placeholder="tu@email.com"
+>
+
+
+<label>
+¿Estás pensando en vender?
+</label>
 
 <select id="leadSelling">
 
-<option value="Sí">Sí</option>
+<option value="Sí">
+Sí
+</option>
 
 <option value="No, solo quiero conocer el valor">
 No, solo quiero conocer el valor
@@ -758,9 +821,15 @@ Quizá más adelante
 
 </select>
 
+
 <label style="display:flex;gap:8px;align-items:flex-start;font-weight:500">
 
-<input id="consent" type="checkbox" style="width:auto;margin-top:3px" required>
+<input
+id="consent"
+type="checkbox"
+style="width:auto;margin-top:3px"
+required
+>
 
 <span>
 Acepto el tratamiento de mis datos para gestionar esta solicitud de valoración y contactar conmigo. *
@@ -768,67 +837,230 @@ Acepto el tratamiento de mis datos para gestionar esta solicitud de valoración 
 
 </label>
 
-<button class="btn primary" type="button" id="continueBtn" style="width:100%;margin-top:18px">
+
+<button
+class="btn primary"
+type="button"
+id="continueBtn"
+style="width:100%;margin-top:18px"
+>
+
 CONTINUAR CON LA VALORACIÓN
+
 </button>
 
 </div>
 
+
+<!-- PASO 2 -->
+
 <div id="step2" style="display:none">
 
 <div class="notice" style="margin-bottom:12px">
-Tus datos de contacto ya están guardados en este formulario. No tendrás que volver a introducirlos.
+
+Tus datos de contacto ya están guardados en este formulario.
+
 </div>
 
-<label>Tipo de inmueble</label>
+
+<label>
+Tipo de inmueble
+</label>
 
 <select id="type">
+
 <option>Piso</option>
 <option>Casa</option>
 <option>Chalet</option>
 <option>Ático</option>
+
 </select>
 
-<label>Superficie aproximada (m²)</label>
 
-<input id="sqm" type="number" min="20" placeholder="Ej. 90" required>
+<label>
+Superficie aproximada (m²)
+</label>
 
-<label>Habitaciones</label>
+<input
+id="sqm"
+type="number"
+min="20"
+placeholder="Ej. 90"
+required
+>
 
-<input id="rooms" type="number" min="0" placeholder="Ej. 3" required>
 
-<label>Baños</label>
+<label>
+Habitaciones
+</label>
 
-<input id="baths" type="number" min="0" placeholder="Ej. 2" required>
+<input
+id="rooms"
+type="number"
+min="0"
+placeholder="Ej. 3"
+required
+>
 
-<label>Zona / municipio</label>
 
-<select id="area" required>
+<label>
+Baños
+</label>
+
+<input
+id="baths"
+type="number"
+min="0"
+placeholder="Ej. 2"
+required
+>
+
+
+<label>
+Municipio
+</label>
+
+<select id="municipio" required>
+
+<option value="" selected disabled>
+Selecciona un municipio
+</option>
+
+<option value="almeria">
+Almería
+</option>
+
+<option value="adra">
+Adra
+</option>
+
+<option value="albox">
+Albox
+</option>
+
+<option value="antas">
+Antas
+</option>
+
+<option value="arboleas">
+Arboleas
+</option>
+
+<option value="berja">
+Berja
+</option>
+
+<option value="carboneras">
+Carboneras
+</option>
+
+<option value="cuevas">
+Cuevas del Almanzora
+</option>
+
+<option value="ejido">
+El Ejido
+</option>
+
+<option value="gador">
+Gádor
+</option>
+
+<option value="garrucha">
+Garrucha
+</option>
+
+<option value="huercal">
+Huércal de Almería
+</option>
+
+<option value="huercalovera">
+Huércal-Overa
+</option>
+
+<option value="mojonera">
+La Mojonera
+</option>
+
+<option value="gallardos">
+Los Gallardos
+</option>
+
+<option value="mojacar">
+Mojácar
+</option>
+
+<option value="nijar">
+Níjar
+</option>
+
+<option value="olula">
+Olula del Río
+</option>
+
+<option value="pulpi">
+Pulpí
+</option>
+
+<option value="roquetas">
+Roquetas de Mar
+</option>
+
+<option value="terrenos">
+San Juan de los Terreros
+</option>
+
+<option value="turre">
+Turre
+</option>
+
+<option value="velezblanco">
+Vélez-Blanco
+</option>
+
+<option value="velezrubio">
+Vélez-Rubio
+</option>
+
+<option value="vera">
+Vera
+</option>
+
+<option value="viator">
+Viator
+</option>
+
+<option value="vicar">
+Vícar
+</option>
+
+<option value="zurgena">
+Zurgena
+</option>
+
+</select>
+
+
+<label id="zonaLabel" style="display:none">
+Zona / barrio
+</label>
+
+<select
+id="area"
+required
+style="display:none"
+>
 
 <option value="" selected disabled>
 Selecciona una zona
 </option>
 
-<option value="general">Almería (media ciudad)</option>
-<option value="altamira">Altamira - Oliveros - Barrio Alto</option>
-<option value="sanluis">Barrio San Luis - Los Molinos</option>
-<option value="centro">Centro</option>
-<option value="centrorambla">Centro-Rambla</option>
-<option value="plazadetoros">Plaza de Toros</option>
-<option value="retamar">Retamar</option>
-<option value="vega">Vega de Acá - Nueva Almería - Cortijo Grande</option>
-<option value="villablanca">Villablanca - Torrecárdenas</option>
-<option value="zapillo">Zapillo</option>
-<option value="nuevaandalucia">Nueva Andalucía - Regiones</option>
-<option value="losangeles">Los Ángeles - Cruz de Caravaca</option>
-<option value="canada">La Cañada - Costacabana - Loma Cabrera</option>
-<option value="alquian">El Alquián - San Miguel</option>
-<option value="esperanza">Esperanza - Quemadero</option>
-<option value="chanca">La Chanca - Pescadería</option>
-
 </select>
 
-<label>Estado de la vivienda</label>
+
+<label>
+Estado de la vivienda
+</label>
 
 <select id="condition">
 
@@ -846,25 +1078,49 @@ Reformada / muy buen estado
 
 </select>
 
-<button class="btn primary" type="submit" id="valuationSubmitBtn" style="width:100%;margin-top:18px">
+
+<button
+class="btn primary"
+type="submit"
+id="valuationSubmitBtn"
+style="width:100%;margin-top:18px"
+>
+
 CALCULAR ESTIMACIÓN
+
 </button>
 
-<button class="btn" type="button" id="backBtn" style="width:100%;margin-top:8px;border:1px solid #d8d2c9;background:#fff">
+
+<button
+class="btn"
+type="button"
+id="backBtn"
+style="width:100%;margin-top:8px;border:1px solid #d8d2c9;background:#fff"
+>
+
 ← VOLVER
+
 </button>
 
 </div>
 
+
+<!-- RESULTADO -->
+
 <div id="result" class="result">
 
-<div class="result-title">
+<div>
 Estimación orientativa
 </div>
 
 <strong id="range"></strong>
 
-<div id="zoneRef" class="notice" style="margin-top:8px"></div>
+<div
+id="zoneRef"
+class="notice"
+style="margin-top:8px"
+></div>
+
 
 <div id="comparisonBox" style="margin-top:16px">
 
@@ -872,9 +1128,11 @@ Estimación orientativa
 Para que puedas situarte
 </strong>
 
-<div id="examples" class="examples"></div>
+<div id="examples" class="examples">
+</div>
 
 </div>
+
 
 <div class="notice">
 
@@ -882,37 +1140,76 @@ La cifra es una estimación online basada en superficie, zona, tipo, caracterís
 
 </div>
 
-<a class="btn primary" style="margin-top:14px;width:100%" href="#contacto">
+
+<a
+class="btn primary"
+style="margin-top:14px;width:100%"
+href="#contacto"
+>
+
 QUIERO UNA VALORACIÓN PERSONALIZADA
+
 </a>
 
-<a class="btn" style="margin-top:8px;width:100%;border:1px solid #25D366;color:#168f45" id="resultWhatsapp" target="_blank" rel="noopener">
+
+<a
+class="btn"
+style="margin-top:8px;width:100%;border:1px solid #25D366;color:#168f45"
+id="resultWhatsapp"
+target="_blank"
+rel="noopener"
+>
+
 💬 HABLAR POR WHATSAPP
+
 </a>
 
 </div>
 
-<div id="leadStatus" class="notice" style="display:none;margin-top:12px"></div>
+
+<div
+id="leadStatus"
+class="notice"
+style="display:none;margin-top:12px"
+></div>
 
 </form>
 
-<iframe name="leadSubmitFrame" id="leadSubmitFrame" style="display:none"></iframe>
 
-<form id="leadPostForm" method="POST" style="display:none"></form>
+<iframe
+name="leadSubmitFrame"
+id="leadSubmitFrame"
+style="display:none"
+></iframe>
+
+<form
+id="leadPostForm"
+method="POST"
+style="display:none"
+></form>
 
 </div>
+
 </div>
+
 </section>
 
-<!-- VENDER -->
+
+<!-- ======================================================
+     VENDER
+====================================================== -->
 
 <section id="vender" class="section">
 
 <div class="container">
 
-<div class="eyebrow">Vender una vivienda</div>
+<div class="eyebrow">
+Vender una vivienda
+</div>
 
-<h2>Vender no es solo poner un anuncio</h2>
+<h2>
+Vender no es solo poner un anuncio
+</h2>
 
 <p class="lead">
 Te acompañamos durante todo el proceso, desde la valoración inicial hasta la firma.
@@ -921,44 +1218,68 @@ Te acompañamos durante todo el proceso, desde la valoración inicial hasta la f
 <div class="grid3">
 
 <div class="card">
-<h3>Valoración</h3>
+
+<h3>
+Valoración
+</h3>
+
 <p>
 Analizamos la vivienda y el mercado de la zona para definir una estrategia de precio.
 </p>
+
 </div>
 
 <div class="card">
-<h3>Presentación y publicidad</h3>
+
+<h3>
+Presentación y publicidad
+</h3>
+
 <p>
 Preparamos el inmueble y damos visibilidad a la propiedad en distintos canales.
 </p>
+
 </div>
 
 <div class="card">
-<h3>Negociación y gestión</h3>
+
+<h3>
+Negociación y gestión
+</h3>
+
 <p>
 Coordinamos visitas, negociación, documentación y el proceso hasta notaría.
 </p>
-</div>
 
 </div>
 
 </div>
+
+</div>
+
 </section>
 
-<!-- COMPRAR -->
+
+<!-- ======================================================
+     COMPRADORES
+====================================================== -->
 
 <section id="comprar" class="section buyer-section">
 
 <div class="container">
 
-<div class="eyebrow">Comprar una vivienda</div>
+<div class="eyebrow">
+Comprar una vivienda
+</div>
 
-<h2>Cuéntanos qué vivienda estás buscando</h2>
+<h2>
+Cuéntanos qué vivienda estás buscando
+</h2>
 
 <p class="lead">
 Déjanos tus preferencias y podremos ayudarte a encontrar viviendas que encajen contigo.
 </p>
+
 
 <div class="buyerbox">
 
@@ -966,188 +1287,473 @@ Déjanos tus preferencias y podremos ayudarte a encontrar viviendas que encajen 
 
 <div class="buyer-grid">
 
-<div>
-<label>Nombre *</label>
-<input id="buyerName" type="text" placeholder="Tu nombre" required>
-</div>
 
 <div>
-<label>Teléfono *</label>
-<input id="buyerPhone" type="tel" placeholder="611 668 768" required>
+
+<label>
+Nombre *
+</label>
+
+<input
+id="buyerName"
+type="text"
+placeholder="Tu nombre"
+required
+>
+
 </div>
 
-<div>
-<label>Email *</label>
-<input id="buyerEmail" type="email" placeholder="tu@email.com" required>
-</div>
 
 <div>
-<label>Zona o zonas que te interesan *</label>
-<input id="buyerArea" type="text" placeholder="Ej. Almería centro, Zapillo, Retamar..." required>
+
+<label>
+Teléfono *
+</label>
+
+<input
+id="buyerPhone"
+type="tel"
+placeholder="611 668 768"
+required
+>
+
 </div>
 
+
 <div>
-<label>Tipo de vivienda</label>
+
+<label>
+Email *
+</label>
+
+<input
+id="buyerEmail"
+type="email"
+placeholder="tu@email.com"
+required
+>
+
+</div>
+
+
+<div>
+
+<label>
+Zona o zonas que te interesan *
+</label>
+
+<input
+id="buyerArea"
+type="text"
+placeholder="Ej. Almería centro, Zapillo, Retamar..."
+required
+>
+
+</div>
+
+
+<div>
+
+<label>
+Tipo de vivienda
+</label>
 
 <select id="buyerType">
-<option value="Indiferente">Indiferente</option>
-<option value="Piso">Piso</option>
-<option value="Casa">Casa</option>
-<option value="Chalet">Chalet</option>
-<option value="Ático">Ático</option>
-<option value="Dúplex">Dúplex</option>
-<option value="Otro">Otro</option>
+
+<option value="Indiferente">
+Indiferente
+</option>
+
+<option value="Piso">
+Piso
+</option>
+
+<option value="Casa">
+Casa
+</option>
+
+<option value="Chalet">
+Chalet
+</option>
+
+<option value="Ático">
+Ático
+</option>
+
+<option value="Dúplex">
+Dúplex
+</option>
+
+<option value="Otro">
+Otro
+</option>
+
 </select>
 
 </div>
 
-<div>
-<label>Presupuesto máximo</label>
-<input id="buyerBudget" type="number" min="0" placeholder="Ej. 180000 €">
-</div>
 
 <div>
-<label>Habitaciones mínimas</label>
-<input id="buyerRooms" type="number" min="0" placeholder="Ej. 3">
+
+<label>
+Presupuesto máximo
+</label>
+
+<input
+id="buyerBudget"
+type="number"
+min="0"
+placeholder="Ej. 180000 €"
+>
+
 </div>
 
-<div>
-<label>Baños mínimos</label>
-<input id="buyerBaths" type="number" min="0" placeholder="Ej. 2">
-</div>
 
 <div>
-<label>Superficie mínima (m²)</label>
-<input id="buyerMeters" type="number" min="0" placeholder="Ej. 90">
+
+<label>
+Habitaciones mínimas
+</label>
+
+<input
+id="buyerRooms"
+type="number"
+min="0"
+placeholder="Ej. 3"
+>
+
 </div>
 
+
 <div>
-<label>Estado</label>
+
+<label>
+Baños mínimos
+</label>
+
+<input
+id="buyerBaths"
+type="number"
+min="0"
+placeholder="Ej. 2"
+>
+
+</div>
+
+
+<div>
+
+<label>
+Superficie mínima (m²)
+</label>
+
+<input
+id="buyerMeters"
+type="number"
+min="0"
+placeholder="Ej. 90"
+>
+
+</div>
+
+
+<div>
+
+<label>
+Estado
+</label>
 
 <select id="buyerCondition">
-<option value="Indiferente">Indiferente</option>
-<option value="Obra nueva">Obra nueva</option>
-<option value="Segunda mano">Segunda mano</option>
+
+<option value="Indiferente">
+Indiferente
+</option>
+
+<option value="Obra nueva">
+Obra nueva
+</option>
+
+<option value="Segunda mano">
+Segunda mano
+</option>
+
 </select>
 
 </div>
 
+
 <div>
-<label>¿Para qué quieres comprar?</label>
+
+<label>
+¿Para qué quieres comprar?
+</label>
 
 <select id="buyerPurpose">
-<option value="Vivienda habitual">Vivienda habitual</option>
-<option value="Inversión">Inversión</option>
-<option value="Segunda residencia">Segunda residencia</option>
+
+<option value="Vivienda habitual">
+Vivienda habitual
+</option>
+
+<option value="Inversión">
+Inversión
+</option>
+
+<option value="Segunda residencia">
+Segunda residencia
+</option>
+
 </select>
 
 </div>
 
-<div>
-<label>Ahorros disponibles *</label>
-<input id="buyerSavings" type="number" min="0" placeholder="Ej. 40000 €" required>
-</div>
 
 <div>
-<label>Ingresos netos mensuales del hogar *</label>
-<input id="buyerIncome" type="number" min="0" placeholder="Ej. 3000 €" required>
+
+<label>
+Ahorros disponibles *
+</label>
+
+<input
+id="buyerSavings"
+type="number"
+min="0"
+placeholder="Ej. 40000 €"
+required
+>
+
 </div>
 
+
 <div>
-<label>Número de compradores</label>
+
+<label>
+Ingresos netos mensuales del hogar *
+</label>
+
+<input
+id="buyerIncome"
+type="number"
+min="0"
+placeholder="Ej. 3000 €"
+required
+>
+
+</div>
+
+
+<div>
+
+<label>
+Número de compradores
+</label>
 
 <select id="buyerPeople">
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
-<option value="4 o más">4 o más</option>
+
+<option value="1">
+1
+</option>
+
+<option value="2">
+2
+</option>
+
+<option value="3">
+3
+</option>
+
+<option value="4 o más">
+4 o más
+</option>
+
 </select>
 
 </div>
 
-<div>
-<label>Otros pagos de préstamos</label>
-<input id="buyerLoans" type="number" min="0" placeholder="Cuota mensual">
-</div>
 
 <div>
-<label>¿Necesitas financiación?</label>
+
+<label>
+Otros pagos de préstamos
+</label>
+
+<input
+id="buyerLoans"
+type="number"
+min="0"
+placeholder="Cuota mensual"
+>
+
+</div>
+
+
+<div>
+
+<label>
+¿Necesitas financiación?
+</label>
 
 <select id="buyerFinancing">
-<option value="Sí">Sí</option>
-<option value="No">No</option>
-<option value="No estoy seguro">No estoy seguro</option>
+
+<option value="Sí">
+Sí
+</option>
+
+<option value="No">
+No
+</option>
+
+<option value="No estoy seguro">
+No estoy seguro
+</option>
+
 </select>
 
 </div>
+
 
 <div>
-<label>¿Tienes estudio hipotecario?</label>
+
+<label>
+¿Tienes estudio hipotecario?
+</label>
 
 <select id="buyerMortgageStudy">
-<option value="No">No</option>
-<option value="Sí">Sí</option>
-<option value="En proceso">En proceso</option>
+
+<option value="No">
+No
+</option>
+
+<option value="Sí">
+Sí
+</option>
+
+<option value="En proceso">
+En proceso
+</option>
+
 </select>
 
 </div>
+
 
 <div class="buyer-full">
 
-<label>Preferencias</label>
+<label>
+Preferencias
+</label>
 
 <div class="buyer-checks">
 
 <label class="buyer-check">
-<input type="checkbox" id="buyerElevator">
+
+<input
+type="checkbox"
+id="buyerElevator"
+>
+
 Ascensor
+
 </label>
 
+
 <label class="buyer-check">
-<input type="checkbox" id="buyerGarage">
+
+<input
+type="checkbox"
+id="buyerGarage"
+>
+
 Garaje
+
 </label>
 
+
 <label class="buyer-check">
-<input type="checkbox" id="buyerTerrace">
+
+<input
+type="checkbox"
+id="buyerTerrace"
+>
+
 Terraza
+
 </label>
+
 
 <label class="buyer-check">
-<input type="checkbox" id="buyerExterior">
+
+<input
+type="checkbox"
+id="buyerExterior"
+>
+
 Exterior
+
 </label>
 
 </div>
 
 </div>
+
 
 <div>
-<label>¿Cuándo tienes previsto comprar?</label>
+
+<label>
+¿Cuándo tienes previsto comprar?
+</label>
 
 <select id="buyerWhen">
-<option value="Inmediatamente">Inmediatamente</option>
-<option value="1-3 meses">1-3 meses</option>
-<option value="3-6 meses">3-6 meses</option>
-<option value="6-12 meses">6-12 meses</option>
-<option value="Más adelante">Más adelante</option>
+
+<option value="Inmediatamente">
+Inmediatamente
+</option>
+
+<option value="1-3 meses">
+1-3 meses
+</option>
+
+<option value="3-6 meses">
+3-6 meses
+</option>
+
+<option value="6-12 meses">
+6-12 meses
+</option>
+
+<option value="Más adelante">
+Más adelante
+</option>
+
 </select>
 
 </div>
 
+
 <div class="buyer-full">
 
-<label>¿Quieres contarnos algo más?</label>
+<label>
+¿Quieres contarnos algo más?
+</label>
 
-<input id="buyerNotes" type="text" placeholder="Preferencias, necesidades especiales, etc.">
+<input
+id="buyerNotes"
+type="text"
+placeholder="Preferencias, necesidades especiales, etc."
+>
 
 </div>
+
 
 <div class="buyer-full">
 
 <label style="display:flex;gap:8px;align-items:flex-start;font-weight:500">
 
-<input id="buyerConsent" type="checkbox" style="width:auto;margin-top:3px" required>
+<input
+id="buyerConsent"
+type="checkbox"
+style="width:auto;margin-top:3px"
+required
+>
 
 <span>
 Acepto el tratamiento de mis datos para gestionar mi solicitud de compra y contactar conmigo. *
@@ -1157,15 +1763,28 @@ Acepto el tratamiento de mis datos para gestionar mi solicitud de compra y conta
 
 </div>
 
+
 <div class="buyer-full">
 
-<button class="btn primary" id="buyerSubmitBtn" type="submit" style="width:100%;margin-top:18px">
+<button
+class="btn primary"
+id="buyerSubmitBtn"
+type="submit"
+style="width:100%;margin-top:18px"
+>
+
 QUIERO RECIBIR VIVIENDAS
+
 </button>
 
-<div id="buyerStatus" class="notice" style="display:none"></div>
+<div
+id="buyerStatus"
+class="notice"
+style="display:none"
+></div>
 
 </div>
+
 
 </div>
 
@@ -1177,15 +1796,22 @@ QUIERO RECIBIR VIVIENDAS
 
 </section>
 
-<!-- POR QUÉ NOSOTROS -->
+
+<!-- ======================================================
+     SERVICIO
+====================================================== -->
 
 <section class="section soft">
 
 <div class="container">
 
-<div class="eyebrow">Por qué nosotros</div>
+<div class="eyebrow">
+Por qué nosotros
+</div>
 
-<h2>Tu vivienda, tratada como si fuera la nuestra</h2>
+<h2>
+Tu vivienda, tratada como si fuera la nuestra
+</h2>
 
 <p class="lead">
 Atención directa, seguimiento personalizado y conocimiento del mercado de Almería.
@@ -1194,40 +1820,63 @@ Atención directa, seguimiento personalizado y conocimiento del mercado de Almer
 <div class="grid3">
 
 <div class="card">
-<h3>Atención directa</h3>
+
+<h3>
+Atención directa
+</h3>
+
 <p>
 Un trato cercano y seguimiento durante todo el proceso.
 </p>
+
 </div>
 
 <div class="card">
-<h3>Almería y provincia</h3>
+
+<h3>
+Almería y provincia
+</h3>
+
 <p>
 Trabajamos con conocimiento del mercado local.
 </p>
+
 </div>
 
 <div class="card">
-<h3>Sin comisión al comprador</h3>
+
+<h3>
+Sin comisión al comprador
+</h3>
+
 <p>
 Una condición clara que facilita la comercialización de tus propiedades.
 </p>
-</div>
 
 </div>
 
 </div>
+
+</div>
+
 </section>
 
-<!-- PROPIEDADES -->
+
+<!-- ======================================================
+     PROPIEDADES
+====================================================== -->
 
 <section id="propiedades" class="section">
 
 <div class="container">
 
-<div class="eyebrow">Propiedades</div>
+<div class="eyebrow">
+Propiedades
+</div>
 
-<h2>Nuestras viviendas en venta</h2>
+<h2>
+Nuestras viviendas en venta
+</h2>
 
 <p class="lead">
 Consulta todas las propiedades que tenemos actualmente disponibles en Idealista. La cartera se mantiene actualizada allí para que puedas ver fotografías, características, precio y todos los detalles de cada vivienda.
@@ -1243,24 +1892,39 @@ Consulta todas las propiedades que tenemos actualmente disponibles en Idealista.
 Descubre nuestra selección de viviendas en Almería y encuentra la que mejor encaje contigo.
 </p>
 
-<a class="btn primary" href="https://www.idealista.com/pro/inmobiliaria-jose-caparros/venta-viviendas/" target="_blank" rel="noopener">
+<a
+class="btn primary"
+href="https://www.idealista.com/pro/inmobiliaria-jose-caparros/venta-viviendas/"
+target="_blank"
+rel="noopener"
+>
+
 VER TODAS LAS PROPIEDADES
+
 </a>
 
 </div>
 
 </div>
+
 </section>
 
-<!-- RESEÑAS -->
+
+<!-- ======================================================
+     RESEÑAS
+====================================================== -->
 
 <section id="resenas" class="section soft">
 
 <div class="container">
 
-<div class="eyebrow">Opiniones</div>
+<div class="eyebrow">
+Opiniones
+</div>
 
-<h2>Lo que dicen nuestros clientes</h2>
+<h2>
+Lo que dicen nuestros clientes
+</h2>
 
 <p class="lead">
 Conoce las opiniones y valoraciones de clientes sobre Inmobiliaria José Caparrós.
@@ -1276,37 +1940,61 @@ Conoce las opiniones y valoraciones de clientes sobre Inmobiliaria José Caparr�
 Consulta las reseñas publicadas sobre nuestra agencia y conoce la experiencia de otros clientes.
 </p>
 
-<a class="btn primary" href="https://realadvisor.es/es/agencias-inmobiliarias/agencia-inmobiliaria-jose-caparros" target="_blank" rel="noopener">
+<a
+class="btn primary"
+href="https://realadvisor.es/es/agencias-inmobiliarias/agencia-inmobiliaria-jose-caparros"
+target="_blank"
+rel="noopener"
+>
+
 VER RESEÑAS
+
 </a>
 
 </div>
 
 </div>
+
 </section>
 
-<!-- CTA -->
+
+<!-- ======================================================
+     CTA
+====================================================== -->
 
 <section class="section cta">
 
 <div class="container">
 
-<div class="eyebrow">¿Vas a vender?</div>
+<div class="eyebrow">
+¿Vas a vender?
+</div>
 
-<h2>Descubre cuánto podría valer tu vivienda</h2>
+<h2>
+Descubre cuánto podría valer tu vivienda
+</h2>
 
 <p>
 Haz una primera valoración gratuita y, si quieres, hablamos personalmente.
 </p>
 
-<a class="btn primary" href="#valoracion">
+<a
+class="btn primary"
+href="#valoracion"
+>
+
 VALORA TU VIVIENDA
+
 </a>
 
 </div>
+
 </section>
 
-<!-- CONTACTO -->
+
+<!-- ======================================================
+     CONTACTO
+====================================================== -->
 
 <section id="contacto" class="section soft">
 
@@ -1314,9 +2002,13 @@ VALORA TU VIVIENDA
 
 <div>
 
-<div class="eyebrow">Contacto</div>
+<div class="eyebrow">
+Contacto
+</div>
 
-<h2>Hablemos de tu vivienda</h2>
+<h2>
+Hablemos de tu vivienda
+</h2>
 
 <p class="lead">
 Cuéntanos qué necesitas y nos pondremos en contacto contigo.
@@ -1325,31 +2017,66 @@ Cuéntanos qué necesitas y nos pondremos en contacto contigo.
 <div class="contactlist">
 
 <div class="contactitem">
-<strong>📍 Dirección</strong><br>
+
+<strong>
+📍 Dirección
+</strong>
+
+<br>
+
 Universidad de Texas 2, Almería
+
 </div>
 
-<div class="contactitem">
-<strong>📞 Teléfono</strong><br>
-<a href="tel:+34611668768">611 668 768</a>
-</div>
 
 <div class="contactitem">
 
-<strong>💬 WhatsApp</strong><br>
+<strong>
+📞 Teléfono
+</strong>
 
-<a href="https://wa.me/34611668768?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20vivienda%20y%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n." target="_blank" rel="noopener">
-611 668 768 · Contactar por WhatsApp
+<br>
+
+<a href="tel:+34611668768">
+611 668 768
 </a>
 
 </div>
 
+
 <div class="contactitem">
 
-<strong>✉️ Email</strong><br>
+<strong>
+💬 WhatsApp
+</strong>
+
+<br>
+
+<a
+href="https://wa.me/34611668768?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20vivienda%20y%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n."
+target="_blank"
+rel="noopener"
+>
+
+611 668 768 · Contactar por WhatsApp
+
+</a>
+
+</div>
+
+
+<div class="contactitem">
+
+<strong>
+✉️ Email
+</strong>
+
+<br>
 
 <a href="mailto:inmobiliariajosecaparros@gmail.com">
+
 inmobiliariajosecaparros@gmail.com
+
 </a>
 
 </div>
@@ -1357,30 +2084,73 @@ inmobiliariajosecaparros@gmail.com
 </div>
 
 </div>
+
 
 <div class="formbox">
 
 <h3 style="margin-top:0">
+
 Solicita una valoración personalizada
+
 </h3>
+
 
 <form id="contactForm">
 
-<label>Nombre *</label>
-<input id="contactName" type="text" placeholder="Tu nombre" required>
+<label>
+Nombre *
+</label>
 
-<label>Teléfono *</label>
-<input id="contactPhone" type="tel" placeholder="Tu teléfono" required>
+<input
+id="contactName"
+type="text"
+placeholder="Tu nombre"
+required
+>
 
-<label>Email</label>
-<input id="contactEmail" type="email" placeholder="tu@email.com">
 
-<label>Mensaje</label>
-<input id="contactMessage" type="text" placeholder="Cuéntanos brevemente tu vivienda">
+<label>
+Teléfono *
+</label>
+
+<input
+id="contactPhone"
+type="tel"
+placeholder="Tu teléfono"
+required
+>
+
+
+<label>
+Email
+</label>
+
+<input
+id="contactEmail"
+type="email"
+placeholder="tu@email.com"
+>
+
+
+<label>
+Mensaje
+</label>
+
+<input
+id="contactMessage"
+type="text"
+placeholder="Cuéntanos brevemente tu vivienda"
+>
+
 
 <label style="display:flex;gap:8px;align-items:flex-start;font-weight:500">
 
-<input id="contactConsent" type="checkbox" style="width:auto;margin-top:3px" required>
+<input
+id="contactConsent"
+type="checkbox"
+style="width:auto;margin-top:3px"
+required
+>
 
 <span>
 Acepto el tratamiento de mis datos para gestionar mi solicitud y contactar conmigo. *
@@ -1388,11 +2158,24 @@ Acepto el tratamiento de mis datos para gestionar mi solicitud y contactar conmi
 
 </label>
 
-<button class="btn primary" type="submit" id="contactSubmitBtn" style="width:100%;margin-top:18px">
+
+<button
+class="btn primary"
+type="submit"
+id="contactSubmitBtn"
+style="width:100%;margin-top:18px"
+>
+
 SOLICITAR CONTACTO
+
 </button>
 
-<div id="contactStatus" class="notice" style="display:none;margin-top:12px"></div>
+
+<div
+id="contactStatus"
+class="notice"
+style="display:none;margin-top:12px"
+></div>
 
 </form>
 
@@ -1402,49 +2185,551 @@ SOLICITAR CONTACTO
 
 </section>
 
-<a class="whatsapp-float" href="https://wa.me/34611668768?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20vivienda%20y%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+
+<a
+class="whatsapp-float"
+href="https://wa.me/34611668768?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20vivienda%20y%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n."
+target="_blank"
+rel="noopener"
+aria-label="Contactar por WhatsApp"
+>
+
 💬 WhatsApp
+
 </a>
+
 
 <footer class="footer">
 
 <div class="container">
 
 <div>
-<strong>Inmobiliaria José Caparrós</strong><br>
+
+<strong>
+Inmobiliaria José Caparrós
+</strong>
+
+<br>
+
 <span class="muted">
 Venta · Compra · Alquiler · Valoraciones
 </span>
+
 </div>
 
 <div class="muted">
+
 © 2026 Inmobiliaria José Caparrós · Aviso legal · Privacidad · Cookies
+
 </div>
 
 </div>
 
 </footer>
 
+
 <script>
 
+/* ==========================================================
+   GOOGLE APPS SCRIPT
+========================================================== */
+
+const googleScriptUrl=
+'https://script.google.com/macros/s/AKfycby-4dIfxIPyuT6EE-aRK4pot5CNbMY8q1tXer2pyVKJRq-Mu6L3KOvqWLq-Mvbf2cvp/exec';
+
+const siteUrl=
+'https://josecaparros19.github.io/inmobiliaria-jose-caparros/';
+
+
+/* ==========================================================
+   BASE DE PRECIOS - AGOSTO 2026
+========================================================== */
+
 const zonePrices={
-general:{name:'Almería',price:1807},
-altamira:{name:'Altamira - Oliveros - Barrio Alto',price:2055},
-sanluis:{name:'Barrio San Luis - Los Molinos',price:1795},
-centro:{name:'Centro',price:1957},
-centrorambla:{name:'Centro-Rambla',price:1993},
-plazadetoros:{name:'Plaza de Toros',price:1619},
-retamar:{name:'Retamar',price:2443},
-vega:{name:'Vega de Acá - Nueva Almería - Cortijo Grande',price:2641},
-villablanca:{name:'Villablanca - Torrecárdenas',price:1817},
-zapillo:{name:'Zapillo',price:2297},
-nuevaandalucia:{name:'Nueva Andalucía - Regiones',price:2059},
-losangeles:{name:'Los Ángeles - Cruz de Caravaca',price:1376},
-canada:{name:'La Cañada - Costacabana - Loma Cabrera',price:1193},
-alquian:{name:'El Alquián - San Miguel',price:1060},
-esperanza:{name:'Esperanza - Quemadero',price:1049},
-chanca:{name:'La Chanca - Pescadería',price:662}
+
+almeria:{
+name:'Almería',
+price:1807,
+
+zones:{
+
+general:{
+name:'Almería - Media ciudad',
+price:1807
+},
+
+altamira:{
+name:'Altamira - Oliveros - Barrio Alto',
+price:2055
+},
+
+sanluis:{
+name:'Barrio San Luis - Los Molinos',
+price:1795
+},
+
+centro:{
+name:'Centro',
+price:1957
+},
+
+centrorambla:{
+name:'Centro-Rambla',
+price:1993
+},
+
+ciudadjardin:{
+name:'Ciudad Jardín - Tagarete',
+price:2335
+},
+
+alquian:{
+name:'El Alquián - San Miguel',
+price:1102
+},
+
+eltoyo:{
+name:'El Toyo',
+price:2412
+},
+
+esperanza:{
+name:'Esperanza - Quemadero',
+price:1091
+},
+
+canada:{
+name:'La Cañada - Costacabana - Loma Cabrera',
+price:1182
+},
+
+chanca:{
+name:'La Chanca - Pescadería',
+price:604
+},
+
+losangeles:{
+name:'Los Ángeles - Cruz de Caravaca',
+price:1539
+},
+
+piedras:{
+name:'Piedras Redondas',
+price:1031
+},
+
+plazadetoros:{
+name:'Plaza de Toros',
+price:1619
+},
+
+retamar:{
+name:'Retamar',
+price:2443
+},
+
+vega:{
+name:'Vega de Acá - Nueva Almería - Cortijo Grande',
+price:2641
+},
+
+villablanca:{
+name:'Villablanca - Torrecárdenas',
+price:1817
+},
+
+zapillo:{
+name:'Zapillo',
+price:2297
+}
+
+}
+
+},
+
+
+adra:{
+name:'Adra',
+price:985
+},
+
+
+albox:{
+name:'Albox',
+price:922
+},
+
+
+antas:{
+name:'Antas',
+price:1167
+},
+
+
+arboleas:{
+name:'Arboleas',
+price:1704
+},
+
+
+berja:{
+name:'Berja',
+price:795
+},
+
+
+carboneras:{
+name:'Carboneras',
+price:1706
+},
+
+
+cuevas:{
+name:'Cuevas del Almanzora',
+price:1662,
+
+zones:{
+
+general:{
+name:'Cuevas del Almanzora - Media',
+price:1662
+},
+
+cuevascentro:{
+name:'Cuevas del Almanzora',
+price:966
+},
+
+desertspring:{
+name:'Desert Spring Golf',
+price:3321
+},
+
+calon:{
+name:'El Calón - Pozo Esparto',
+price:2378
+},
+
+palomares:{
+name:'Palomares',
+price:1793
+},
+
+villaricos:{
+name:'Villaricos',
+price:1921
+}
+
+}
+
+},
+
+
+ejido:{
+name:'El Ejido',
+price:1429,
+
+zones:{
+
+general:{
+name:'El Ejido - Media municipal',
+price:1429
+},
+
+almerimar:{
+name:'Almerimar',
+price:2404
+},
+
+balerma:{
+name:'Balerma',
+price:1241
+},
+
+ejidopueblo:{
+name:'El Ejido',
+price:1083
+},
+
+lasnorias:{
+name:'Las Norias',
+price:783
+},
+
+santamaria:{
+name:'Santa María del Águila',
+price:1004
+}
+
+}
+
+},
+
+
+gador:{
+name:'Gádor',
+price:651
+},
+
+
+garrucha:{
+name:'Garrucha',
+price:2070,
+
+zones:{
+
+general:{
+name:'Garrucha - Media',
+price:2070
+},
+
+playa:{
+name:'Playa de Garrucha',
+price:2000
+}
+
+}
+
+},
+
+
+huercal:{
+name:'Huércal de Almería',
+price:1444
+},
+
+
+huercalovera:{
+name:'Huércal-Overa',
+price:1083
+},
+
+
+mojonera:{
+name:'La Mojonera',
+price:832
+},
+
+
+gallardos:{
+name:'Los Gallardos',
+price:1667
+},
+
+
+mojacar:{
+name:'Mojácar',
+price:2633,
+
+zones:{
+
+general:{
+name:'Mojácar - Media',
+price:2633
+},
+
+pueblo:{
+name:'Mojácar Pueblo',
+price:1684
+},
+
+indalo:{
+name:'Pueblo Indalo - Ventanicas - El Cantal',
+price:2839
+},
+
+palmeral:{
+name:'Zona El Palmeral',
+price:2824
+}
+
+}
+
+},
+
+
+nijar:{
+name:'Níjar',
+price:1925,
+
+zones:{
+
+general:{
+name:'Níjar - Media municipal',
+price:1925
+},
+
+sanjose:{
+name:'San José',
+price:2822
+}
+
+}
+
+},
+
+
+olula:{
+name:'Olula del Río',
+price:812
+},
+
+
+pulpi:{
+name:'Pulpí',
+price:1401
+},
+
+
+roquetas:{
+name:'Roquetas de Mar',
+price:1762,
+
+zones:{
+
+general:{
+name:'Roquetas de Mar - Media',
+price:1762
+},
+
+aguadulce:{
+name:'Aguadulce',
+price:2148
+},
+
+parador:{
+name:'El Parador',
+price:1667
+},
+
+roquetas:{
+name:'Roquetas',
+price:1588
+},
+
+puerto:{
+name:'El Puerto - La Romanilla',
+price:2071
+},
+
+sabinar:{
+name:'El Sabinar - Urbanizaciones - Las Marinas',
+price:2101
+},
+
+salinas:{
+name:'Las Salinas',
+price:2130
+},
+
+roquetaspueblo:{
+name:'Roquetas pueblo',
+price:1201
+}
+
+}
+
+},
+
+
+terrenos:{
+name:'San Juan de los Terreros',
+price:2553
+},
+
+
+turre:{
+name:'Turre',
+price:1247
+},
+
+
+velezblanco:{
+name:'Vélez-Blanco',
+price:686
+},
+
+
+velezrubio:{
+name:'Vélez-Rubio',
+price:623
+},
+
+
+vera:{
+name:'Vera',
+price:2455,
+
+zones:{
+
+general:{
+name:'Vera - Media',
+price:2455
+},
+
+playazo:{
+name:'El Playazo',
+price:3241
+},
+
+marinas:{
+name:'Las Marinas',
+price:2573
+},
+
+salinas:{
+name:'Las Salinas',
+price:2638
+},
+
+lomas:{
+name:'Lomas del Mar',
+price:2391
+},
+
+puertorey:{
+name:'Puerto Rey',
+price:2886
+},
+
+golfvalle:{
+name:'Urb. Golf Valle Este',
+price:1768
+},
+
+naturista:{
+name:'Vera Playa Naturista',
+price:3526
+}
+
+}
+
+},
+
+
+viator:{
+name:'Viator',
+price:1126
+},
+
+
+vicar:{
+name:'Vícar',
+price:1343
+},
+
+
+zurgena:{
+name:'Zurgena',
+price:1229
+}
+
 };
+
+
+/* ==========================================================
+   FACTORES
+========================================================== */
 
 const typeFactor={
 Piso:1.03,
@@ -1453,53 +2738,150 @@ Chalet:.90,
 'Ático':1.07
 };
 
+
 const conditionFactor={
 reformar:.90,
 standard:1,
 reformada:1.07
 };
 
-const form=document.getElementById('valuationForm');
-const continueBtn=document.getElementById('continueBtn');
-const backBtn=document.getElementById('backBtn');
-const leadStatus=document.getElementById('leadStatus');
 
-const googleScriptUrl='https://script.google.com/macros/s/AKfycby-4dIfxIPyuT6EE-aRK4pot5CNbMY8q1tXer2pyVKJRq-Mu6L3KOvqWLq-Mvbf2cvp/exec';
+/* ==========================================================
+   ELEMENTOS
+========================================================== */
 
-const siteUrl='https://josecaparros19.github.io/inmobiliaria-jose-caparros/';
+const form=
+document.getElementById('valuationForm');
+
+const continueBtn=
+document.getElementById('continueBtn');
+
+const backBtn=
+document.getElementById('backBtn');
+
+const leadStatus=
+document.getElementById('leadStatus');
+
+const municipioSelect=
+document.getElementById('municipio');
+
+const areaSelect=
+document.getElementById('area');
+
+const zonaLabel=
+document.getElementById('zonaLabel');
 
 
-/* ==========================================
-   VARIABLES DEL LEAD
-========================================== */
+/* ==========================================================
+   LEAD
+========================================================== */
 
 let leadCreated=false;
 let leadId="";
 
 
-/* ==========================================
-   FUNCIÓN PARA VOLVER AL INICIO
-========================================== */
+/* ==========================================================
+   MUNICIPIO → ZONA
+========================================================== */
 
-function volverAlInicio(){
+municipioSelect.addEventListener(
+'change',
+function(){
 
-window.scrollTo({
-top:0,
-behavior:'smooth'
-});
+const municipio=this.value;
 
-setTimeout(function(){
+const datos=
+zonePrices[municipio];
 
-window.location.hash='inicio';
+areaSelect.innerHTML='';
 
-},500);
+
+if(!datos){
+
+zonaLabel.style.display='none';
+
+areaSelect.style.display='none';
+
+return;
 
 }
 
 
-/* ==========================================
-   CREAR LEAD EN EL PRIMER PASO
-========================================== */
+/* MUNICIPIO CON ZONAS */
+
+if(datos.zones){
+
+zonaLabel.style.display='block';
+
+areaSelect.style.display='block';
+
+
+const primeraOption=
+document.createElement('option');
+
+primeraOption.value='';
+
+primeraOption.textContent=
+'Selecciona una zona';
+
+primeraOption.disabled=true;
+
+primeraOption.selected=true;
+
+areaSelect.appendChild(
+primeraOption
+);
+
+
+Object.keys(datos.zones).forEach(
+function(key){
+
+const option=
+document.createElement('option');
+
+option.value=
+municipio+'_'+key;
+
+option.textContent=
+datos.zones[key].name;
+
+areaSelect.appendChild(option);
+
+});
+
+}
+
+
+/* MUNICIPIO SIN ZONAS */
+
+else{
+
+zonaLabel.style.display='block';
+
+areaSelect.style.display='block';
+
+
+const option=
+document.createElement('option');
+
+option.value=
+municipio+'_general';
+
+option.textContent=
+datos.name+' - Media';
+
+option.selected=true;
+
+areaSelect.appendChild(option);
+
+}
+
+});
+
+
+/* ==========================================================
+   CREAR LEAD
+========================================================== */
 
 function crearLeadInicial(){
 
@@ -1516,48 +2898,31 @@ const vender=
 document.getElementById('leadSelling').value;
 
 
-/* ==========================================
-   GENERAR ID ÚNICO
-========================================== */
-
 leadId=
 Date.now().toString()+
 "-"+
 Math.random().toString(36).substring(2,10);
 
 
-/* ==========================================
-   DATOS DEL PRIMER PASO
-========================================== */
-
 const data={
 
-accion:
-"crear_lead_vendedor",
+accion:'crear_lead_vendedor',
 
-leadId:
-leadId,
+leadId:leadId,
 
-nombre:
-nombre,
+nombre:nombre,
 
-telefono:
-telefono,
+telefono:telefono,
 
-email:
-email,
+email:email,
 
-consentimiento:
-"Sí",
+consentimiento:'Sí',
 
-vender:
-vender,
+vender:vender,
 
-pagina:
-siteUrl,
+pagina:siteUrl,
 
-origen:
-"Valorador web Inmobiliaria José Caparrós"
+origen:'Valorador web Inmobiliaria José Caparrós'
 
 };
 
@@ -1570,10 +2935,6 @@ leadStatus.textContent=
 continueBtn.disabled=true;
 
 
-/* ==========================================
-   ENVIAR A GOOGLE APPS SCRIPT
-========================================== */
-
 try{
 
 const iframe=
@@ -1585,20 +2946,17 @@ document.getElementById('leadPostForm');
 postForm.innerHTML='';
 
 
-Object.entries(data).forEach(function(entry){
-
-const key=entry[0];
-
-const value=entry[1];
+Object.entries(data).forEach(
+function(entry){
 
 const input=
 document.createElement('input');
 
 input.type='hidden';
 
-input.name=key;
+input.name=entry[0];
 
-input.value=value;
+input.value=entry[1];
 
 postForm.appendChild(input);
 
@@ -1614,23 +2972,13 @@ iframe.name;
 postForm.submit();
 
 
-/*
-   El lead se ha enviado al Apps Script.
-*/
-
 leadCreated=true;
 
 
-/* ==========================================
-   META PIXEL
-========================================== */
+/* META PIXEL */
 
 fbq('track','Lead');
 
-
-/* ==========================================
-   PASAR AL SEGUNDO PASO
-========================================== */
 
 document.getElementById('step1').style.display='none';
 
@@ -1643,28 +2991,10 @@ continueBtn.disabled=false;
 
 }catch(err){
 
-console.error(
-'Google Apps Script:',
-err
-);
+console.error(err);
 
-leadStatus.innerHTML=`
-
-<div class="success-box">
-
-<div class="icon">!</div>
-
-<strong>
-No hemos podido guardar tus datos
-</strong>
-
-<span>
-Comprueba tu conexión e inténtalo de nuevo.
-</span>
-
-</div>
-
-`;
+leadStatus.textContent=
+'Comprueba tu conexión e inténtalo de nuevo.';
 
 continueBtn.disabled=false;
 
@@ -1673,11 +3003,13 @@ continueBtn.disabled=false;
 }
 
 
-/* ==========================================
+/* ==========================================================
    PASO 1
-========================================== */
+========================================================== */
 
-continueBtn.addEventListener('click',function(){
+continueBtn.addEventListener(
+'click',
+function(){
 
 const name=
 document.getElementById('leadName');
@@ -1695,22 +3027,15 @@ document.getElementById('consent');
 if(!name.reportValidity())
 return;
 
-
 if(!phone.reportValidity())
 return;
-
 
 if(!email.reportValidity())
 return;
 
-
 if(!consent.reportValidity())
 return;
 
-
-/*
-   EVITAR DUPLICADOS
-*/
 
 if(leadCreated){
 
@@ -1723,20 +3048,18 @@ return;
 }
 
 
-/*
-   CREAR LEAD
-*/
-
 crearLeadInicial();
 
 });
 
 
-/* ==========================================
-   VOLVER AL PASO ANTERIOR
-========================================== */
+/* ==========================================================
+   VOLVER
+========================================================== */
 
-backBtn.addEventListener('click',function(){
+backBtn.addEventListener(
+'click',
+function(){
 
 document.getElementById('step2').style.display='none';
 
@@ -1745,18 +3068,16 @@ document.getElementById('step1').style.display='block';
 });
 
 
-/* ==========================================
-   FORMULARIO DE VALORACIÓN
-========================================== */
+/* ==========================================================
+   CALCULADOR
+========================================================== */
 
-form.addEventListener('submit',function(e){
+form.addEventListener(
+'submit',
+function(e){
 
 e.preventDefault();
 
-
-/* ==========================================
-   COMPROBAR QUE EXISTE EL LEAD
-========================================== */
 
 if(!leadId){
 
@@ -1774,29 +3095,40 @@ Number(
 document.getElementById('sqm').value
 )||0;
 
+
 const rooms=
 Number(
 document.getElementById('rooms').value
 )||0;
+
 
 const baths=
 Number(
 document.getElementById('baths').value
 )||0;
 
+
 const type=
 document.getElementById('type').value;
 
+
+const municipio=
+document.getElementById('municipio').value;
+
+
 const area=
 document.getElementById('area').value;
+
 
 const condition=
 document.getElementById('condition').value;
 
 
-if(!sqm || !area){
+if(!sqm || !municipio || !area){
 
 document.getElementById('sqm').reportValidity();
+
+document.getElementById('municipio').reportValidity();
 
 document.getElementById('area').reportValidity();
 
@@ -1805,16 +3137,65 @@ return;
 }
 
 
-const zone=
-zonePrices[area]||
-zonePrices.general;
+/* OBTENER DATOS MUNICIPIO */
 
+const municipioData=
+zonePrices[municipio];
+
+let zone;
+
+
+/* CON ZONAS */
+
+if(
+municipioData &&
+municipioData.zones
+){
+
+const zonaKey=
+area.replace(
+municipio+'_',
+''
+);
+
+
+zone=
+municipioData.zones[zonaKey]||
+municipioData.zones.general;
+
+}
+
+
+/* SIN ZONAS */
+
+else{
+
+zone={
+
+name:
+municipioData
+? municipioData.name
+: 'Almería',
+
+price:
+municipioData
+? municipioData.price
+:1807
+
+};
+
+}
+
+
+/* PRECIO BASE */
 
 let priceM2=
 zone.price*
 (typeFactor[type]||1)*
 (conditionFactor[condition]||1);
 
+
+/* HABITACIONES Y BAÑOS */
 
 priceM2*=
 1+
@@ -1828,11 +3209,15 @@ Math.max(baths-1,0),
 )*.008;
 
 
+/* CENTRO */
+
 const center=
 Math.round(
 (sqm*priceM2)/1000
 )*1000;
 
+
+/* RANGO */
 
 const low=
 Math.round(
@@ -1846,9 +3231,7 @@ center*1.06/1000
 )*1000;
 
 
-/* ==========================================
-   MOSTRAR RESULTADO
-========================================== */
+/* RESULTADO */
 
 document.getElementById('range').textContent=
 
@@ -1865,24 +3248,38 @@ zone.price.toLocaleString('es-ES')+
 ' €/m² (agosto de 2026).';
 
 
-const ex=
-[70,90,110]
-.map(function(m){
+/* EJEMPLOS */
 
-return '<div class="example"><span>'+
-m+
-' m²</span><strong>'+
-Math.round(
+const examples=
+[70,90,110]
+.map(
+function(m){
+
+return `
+<div class="example">
+
+<span>
+${m} m²
+</span>
+
+<strong>
+${Math.round(
 (m*zone.price)/1000
-).toLocaleString('es-ES')+
-'.000 €</strong></div>';
+).toLocaleString('es-ES')}.000 €
+</strong>
+
+</div>
+`;
 
 })
 .join('');
 
 
-document.getElementById('examples').innerHTML=ex;
+document.getElementById('examples').innerHTML=
+examples;
 
+
+/* MOSTRAR */
 
 const resultBox=
 document.getElementById('result');
@@ -1892,7 +3289,8 @@ resultBox.style.display='block';
 resultBox.classList.add('visible');
 
 
-setTimeout(function(){
+setTimeout(
+function(){
 
 resultBox.scrollIntoView({
 
@@ -1902,17 +3300,17 @@ block:'start'
 
 });
 
-},80);
+},
+80
+);
 
 
-/* ==========================================
-   ACTUALIZAR EL MISMO LEAD
-========================================== */
+/* ACTUALIZAR LEAD */
 
 const data={
 
 accion:
-"actualizar_lead_vendedor",
+'actualizar_lead_vendedor',
 
 leadId:
 leadId,
@@ -1945,10 +3343,6 @@ high.toLocaleString('es-ES')+
 };
 
 
-/* ==========================================
-   ENVIAR ACTUALIZACIÓN A GOOGLE APPS SCRIPT
-========================================== */
-
 try{
 
 const iframe=
@@ -1960,20 +3354,17 @@ document.getElementById('leadPostForm');
 postForm.innerHTML='';
 
 
-Object.entries(data).forEach(function(entry){
-
-const key=entry[0];
-
-const value=entry[1];
+Object.entries(data).forEach(
+function(entry){
 
 const input=
 document.createElement('input');
 
 input.type='hidden';
 
-input.name=key;
+input.name=entry[0];
 
-input.value=value;
+input.value=entry[1];
 
 postForm.appendChild(input);
 
@@ -1999,9 +3390,7 @@ err
 }
 
 
-/* ==========================================
-   WHATSAPP
-========================================== */
+/* WHATSAPP */
 
 const msg=
 encodeURIComponent(
@@ -2021,14 +3410,14 @@ document.getElementById('leadPhone').value+
 );
 
 
-document.getElementById('resultWhatsapp').href=
+document.getElementById(
+'resultWhatsapp'
+).href=
 'https://wa.me/34611668768?text='+
 msg;
 
 
-/* ==========================================
-   MENSAJE FINAL
-========================================== */
+/* ESTADO */
 
 leadStatus.style.display='block';
 
@@ -2037,7 +3426,9 @@ leadStatus.innerHTML=`
 
 <div class="success-box">
 
-<div class="icon">✓</div>
+<div class="icon">
+✓
+</div>
 
 <strong>
 ¡Valoración recibida!
@@ -2056,21 +3447,29 @@ Si quieres, puedes contactar directamente con nosotros para una valoración pers
 `;
 
 
-/* ==========================================
-   VOLVER AL INICIO
-========================================== */
+/* RESET */
 
-setTimeout(function(){
+setTimeout(
+function(){
 
 form.reset();
 
-document.getElementById('step2').style.display='none';
+document.getElementById(
+'step2'
+).style.display='none';
 
-document.getElementById('step1').style.display='block';
+
+document.getElementById(
+'step1'
+).style.display='block';
+
 
 resultBox.style.display='none';
 
-resultBox.classList.remove('visible');
+resultBox.classList.remove(
+'visible'
+);
+
 
 leadStatus.style.display='none';
 
@@ -2078,22 +3477,40 @@ leadCreated=false;
 
 leadId="";
 
-volverAlInicio();
 
-},5000);
+areaSelect.innerHTML='';
+
+areaSelect.style.display='none';
+
+zonaLabel.style.display='none';
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:'smooth'
+
+});
+
+},
+5000
+);
 
 });
 
 
-/* ==========================================
-   FORMULARIO DE COMPRADORES
-========================================== */
+/* ==========================================================
+   COMPRADORES
+========================================================== */
 
 const buyerForm=
 document.getElementById('buyerForm');
 
 
-buyerForm.addEventListener('submit',function(e){
+buyerForm.addEventListener(
+'submit',
+function(e){
 
 e.preventDefault();
 
@@ -2102,27 +3519,51 @@ const consent=
 document.getElementById('buyerConsent');
 
 
-if(!document.getElementById('buyerName').reportValidity())
+if(
+!document
+.getElementById('buyerName')
+.reportValidity()
+)
 return;
 
 
-if(!document.getElementById('buyerPhone').reportValidity())
+if(
+!document
+.getElementById('buyerPhone')
+.reportValidity()
+)
 return;
 
 
-if(!document.getElementById('buyerEmail').reportValidity())
+if(
+!document
+.getElementById('buyerEmail')
+.reportValidity()
+)
 return;
 
 
-if(!document.getElementById('buyerArea').reportValidity())
+if(
+!document
+.getElementById('buyerArea')
+.reportValidity()
+)
 return;
 
 
-if(!document.getElementById('buyerSavings').reportValidity())
+if(
+!document
+.getElementById('buyerSavings')
+.reportValidity()
+)
 return;
 
 
-if(!document.getElementById('buyerIncome').reportValidity())
+if(
+!document
+.getElementById('buyerIncome')
+.reportValidity()
+)
 return;
 
 
@@ -2134,93 +3575,140 @@ const preferences=[];
 
 
 if(
-document.getElementById('buyerElevator').checked
+document.getElementById(
+'buyerElevator'
+).checked
 )
 preferences.push('Ascensor');
 
 
 if(
-document.getElementById('buyerGarage').checked
+document.getElementById(
+'buyerGarage'
+).checked
 )
 preferences.push('Garaje');
 
 
 if(
-document.getElementById('buyerTerrace').checked
+document.getElementById(
+'buyerTerrace'
+).checked
 )
 preferences.push('Terraza');
 
 
 if(
-document.getElementById('buyerExterior').checked
+document.getElementById(
+'buyerExterior'
+).checked
 )
 preferences.push('Exterior');
 
 
 const buyerData={
 
+accion:'comprador',
+
 nombre:
-document.getElementById('buyerName').value,
+document.getElementById(
+'buyerName'
+).value,
 
 telefono:
-document.getElementById('buyerPhone').value,
+document.getElementById(
+'buyerPhone'
+).value,
 
 email:
-document.getElementById('buyerEmail').value,
+document.getElementById(
+'buyerEmail'
+).value,
 
 zona:
-document.getElementById('buyerArea').value,
+document.getElementById(
+'buyerArea'
+).value,
 
 tipo:
-document.getElementById('buyerType').value,
+document.getElementById(
+'buyerType'
+).value,
 
 presupuesto:
-document.getElementById('buyerBudget').value,
+document.getElementById(
+'buyerBudget'
+).value,
 
 habitaciones:
-document.getElementById('buyerRooms').value,
+document.getElementById(
+'buyerRooms'
+).value,
 
 banos:
-document.getElementById('buyerBaths').value,
+document.getElementById(
+'buyerBaths'
+).value,
 
 metros:
-document.getElementById('buyerMeters').value,
+document.getElementById(
+'buyerMeters'
+).value,
 
 estado:
-document.getElementById('buyerCondition').value,
+document.getElementById(
+'buyerCondition'
+).value,
 
 finalidad:
-document.getElementById('buyerPurpose').value,
+document.getElementById(
+'buyerPurpose'
+).value,
 
 ahorros:
-document.getElementById('buyerSavings').value,
+document.getElementById(
+'buyerSavings'
+).value,
 
 ingresos:
-document.getElementById('buyerIncome').value,
+document.getElementById(
+'buyerIncome'
+).value,
 
 compradores:
-document.getElementById('buyerPeople').value,
+document.getElementById(
+'buyerPeople'
+).value,
 
 otrosPrestamos:
-document.getElementById('buyerLoans').value,
+document.getElementById(
+'buyerLoans'
+).value,
 
 financiacion:
-document.getElementById('buyerFinancing').value,
+document.getElementById(
+'buyerFinancing'
+).value,
 
 estudioHipoteca:
-document.getElementById('buyerMortgageStudy').value,
+document.getElementById(
+'buyerMortgageStudy'
+).value,
 
 preferencias:
 preferences.join(', '),
 
 cuandoCompra:
-document.getElementById('buyerWhen').value,
+document.getElementById(
+'buyerWhen'
+).value,
 
 notas:
-document.getElementById('buyerNotes').value,
+document.getElementById(
+'buyerNotes'
+).value,
 
-consentimiento:
-'Sí',
+consentimiento:'Sí',
 
 origen:
 'Formulario comprador web Inmobiliaria José Caparrós'
@@ -2229,10 +3717,14 @@ origen:
 
 
 const status=
-document.getElementById('buyerStatus');
+document.getElementById(
+'buyerStatus'
+);
 
 const submitBtn=
-document.getElementById('buyerSubmitBtn');
+document.getElementById(
+'buyerSubmitBtn'
+);
 
 
 status.style.display='block';
@@ -2246,28 +3738,31 @@ submitBtn.disabled=true;
 try{
 
 const iframe=
-document.getElementById('leadSubmitFrame');
+document.getElementById(
+'leadSubmitFrame'
+);
 
 const postForm=
-document.getElementById('leadPostForm');
+document.getElementById(
+'leadPostForm'
+);
 
 postForm.innerHTML='';
 
 
-Object.entries(buyerData).forEach(function(entry){
-
-const key=entry[0];
-
-const value=entry[1];
+Object.entries(
+buyerData
+).forEach(
+function(entry){
 
 const input=
 document.createElement('input');
 
 input.type='hidden';
 
-input.name=key;
+input.name=entry[0];
 
-input.value=value;
+input.value=entry[1];
 
 postForm.appendChild(input);
 
@@ -2287,7 +3782,9 @@ status.innerHTML=`
 
 <div class="success-box">
 
-<div class="icon">✓</div>
+<div class="icon">
+✓
+</div>
 
 <strong>
 ¡Gracias por confiar en Inmobiliaria José Caparrós!
@@ -2297,8 +3794,6 @@ status.innerHTML=`
 Hemos recibido tus preferencias de compra correctamente.
 <br>
 Analizaremos qué viviendas pueden encajar contigo y nos pondremos en contacto contigo.
-<br>
-Volverás al inicio en unos segundos.
 </span>
 
 </div>
@@ -2306,7 +3801,8 @@ Volverás al inicio en unos segundos.
 `;
 
 
-setTimeout(function(){
+setTimeout(
+function(){
 
 buyerForm.reset();
 
@@ -2316,31 +3812,33 @@ status.innerHTML='';
 
 submitBtn.disabled=false;
 
-volverAlInicio();
+window.scrollTo({
 
-},5000);
+top:0,
+
+behavior:'smooth'
+
+});
+
+},
+5000
+);
 
 
 }catch(err){
 
-console.error(
-'Google Apps Script:',
-err
-);
+console.error(err);
 
 status.innerHTML=`
 
 <div class="success-box">
-
-<div class="icon">✓</div>
 
 <strong>
 Hemos recibido tu solicitud
 </strong>
 
 <span>
-Ha habido un problema al confirmar el envío automático.
-Puedes contactar con nosotros directamente por WhatsApp o teléfono.
+Puedes contactar directamente con nosotros por WhatsApp o teléfono.
 </span>
 
 </div>
@@ -2354,49 +3852,62 @@ submitBtn.disabled=false;
 });
 
 
-/* ==========================================
-   FORMULARIO DE CONTACTO
-========================================== */
+/* ==========================================================
+   CONTACTO
+========================================================== */
 
 const contactForm=
-document.getElementById('contactForm');
+document.getElementById(
+'contactForm'
+);
 
 const contactStatus=
-document.getElementById('contactStatus');
+document.getElementById(
+'contactStatus'
+);
 
 const contactSubmitBtn=
-document.getElementById('contactSubmitBtn');
+document.getElementById(
+'contactSubmitBtn'
+);
 
 
-contactForm.addEventListener('submit',function(e){
+contactForm.addEventListener(
+'submit',
+function(e){
 
 e.preventDefault();
 
 
 const name=
-document.getElementById('contactName');
+document.getElementById(
+'contactName'
+);
 
 const phone=
-document.getElementById('contactPhone');
+document.getElementById(
+'contactPhone'
+);
 
 const email=
-document.getElementById('contactEmail');
+document.getElementById(
+'contactEmail'
+);
 
 const consent=
-document.getElementById('contactConsent');
+document.getElementById(
+'contactConsent'
+);
 
 
 if(!name.reportValidity())
 return;
 
-
 if(!phone.reportValidity())
 return;
 
-
 if(!email.reportValidity())
 return;
-
 
 if(!consent.reportValidity())
 return;
@@ -2404,20 +3915,20 @@ return;
 
 const contactData={
 
-nombre:
-name.value,
+accion:'contacto',
 
-telefono:
-phone.value,
+nombre:name.value,
 
-email:
-email.value,
+telefono:phone.value,
+
+email:email.value,
 
 mensaje:
-document.getElementById('contactMessage').value,
+document.getElementById(
+'contactMessage'
+).value,
 
-consentimiento:
-'Sí',
+consentimiento:'Sí',
 
 origen:
 'Formulario contacto web Inmobiliaria José Caparrós'
@@ -2436,28 +3947,31 @@ contactSubmitBtn.disabled=true;
 try{
 
 const iframe=
-document.getElementById('leadSubmitFrame');
+document.getElementById(
+'leadSubmitFrame'
+);
 
 const postForm=
-document.getElementById('leadPostForm');
+document.getElementById(
+'leadPostForm'
+);
 
 postForm.innerHTML='';
 
 
-Object.entries(contactData).forEach(function(entry){
-
-const key=entry[0];
-
-const value=entry[1];
+Object.entries(
+contactData
+).forEach(
+function(entry){
 
 const input=
 document.createElement('input');
 
 input.type='hidden';
 
-input.name=key;
+input.name=entry[0];
 
-input.value=value;
+input.value=entry[1];
 
 postForm.appendChild(input);
 
@@ -2477,7 +3991,9 @@ contactStatus.innerHTML=`
 
 <div class="success-box">
 
-<div class="icon">✓</div>
+<div class="icon">
+✓
+</div>
 
 <strong>
 ¡Solicitud recibida!
@@ -2486,9 +4002,9 @@ contactStatus.innerHTML=`
 <span>
 Hemos recibido correctamente tus datos.
 <br>
-En breve nos pondremos en contacto contigo para realizar una <strong>valoración personalizada de tu vivienda</strong> y comentar contigo su posible valor de mercado.
+En breve nos pondremos en contacto contigo para realizar una valoración personalizada de tu vivienda.
 <br>
-Gracias por confiar en <strong>Inmobiliaria José Caparrós</strong>.
+Gracias por confiar en Inmobiliaria José Caparrós.
 </span>
 
 </div>
@@ -2496,7 +4012,8 @@ Gracias por confiar en <strong>Inmobiliaria José Caparrós</strong>.
 `;
 
 
-setTimeout(function(){
+setTimeout(
+function(){
 
 contactForm.reset();
 
@@ -2506,23 +4023,30 @@ contactStatus.innerHTML='';
 
 contactSubmitBtn.disabled=false;
 
-volverAlInicio();
+window.scrollTo({
 
-},5000);
+top:0,
+
+behavior:'smooth'
+
+});
+
+},
+5000
+);
 
 
 }catch(err){
 
-console.error(
-'Google Apps Script:',
-err
-);
+console.error(err);
 
 contactStatus.innerHTML=`
 
 <div class="success-box">
 
-<div class="icon">!</div>
+<div class="icon">
+!
+</div>
 
 <strong>
 No hemos podido confirmar el envío
