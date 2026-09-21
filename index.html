@@ -19,7 +19,9 @@
 
 *{box-sizing:border-box}
 
-html{scroll-behavior:smooth}
+html{
+scroll-behavior:smooth
+}
 
 body{
 margin:0;
@@ -29,11 +31,21 @@ background:var(--white);
 line-height:1.55
 }
 
-a{text-decoration:none;color:inherit}
+a{
+text-decoration:none;
+color:inherit
+}
 
-.top a:hover,.contactitem a:hover,.footer a:hover{opacity:.8}
+.top a:hover,
+.contactitem a:hover,
+.footer a:hover{
+opacity:.8
+}
 
-.container{width:min(1120px,92%);margin:auto}
+.container{
+width:min(1120px,92%);
+margin:auto
+}
 
 .top{
 background:var(--dark);
@@ -87,7 +99,9 @@ gap:24px;
 font-size:14px
 }
 
-.links a:hover{color:var(--accent)}
+.links a:hover{
+color:var(--accent)
+}
 
 .btn{
 display:inline-flex;
@@ -153,9 +167,13 @@ gap:12px;
 flex-wrap:wrap
 }
 
-.section{padding:85px 0}
+.section{
+padding:85px 0
+}
 
-.soft{background:var(--bg)}
+.soft{
+background:var(--bg)
+}
 
 .eyebrow{
 text-transform:uppercase;
@@ -237,6 +255,11 @@ cursor:pointer;
 border:0
 }
 
+button:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
 .result{
 display:none;
 margin-top:18px;
@@ -252,9 +275,13 @@ display:block;
 margin-top:3px
 }
 
-.result.visible{display:block}
+.result.visible{
+display:block
+}
 
-.result .notice{line-height:1.45}
+.result .notice{
+line-height:1.45
+}
 
 .examples{
 display:grid;
@@ -295,7 +322,9 @@ height:210px;
 object-fit:cover
 }
 
-.property .body{padding:18px}
+.property .body{
+padding:18px
+}
 
 .price{
 font-size:22px;
@@ -349,9 +378,13 @@ justify-content:space-between;
 gap:20px
 }
 
-.muted{color:#aeb5bc}
+.muted{
+color:#aeb5bc
+}
 
-.mobile{display:none}
+.mobile{
+display:none
+}
 
 .notice{
 font-size:12px;
@@ -447,15 +480,51 @@ font-size:13px
 width:auto
 }
 
+/* MENSAJE FINAL */
+
+.success-box{
+margin-top:20px;
+padding:28px 20px;
+background:#f4efe7;
+border-left:4px solid var(--accent);
+text-align:center
+}
+
+.success-box .icon{
+font-size:34px;
+margin-bottom:8px
+}
+
+.success-box strong{
+display:block;
+font-size:21px;
+margin-bottom:8px
+}
+
+.success-box span{
+font-size:14px;
+color:var(--muted)
+}
+
 @media(max-width:800px){
 
-.links{display:none}
+.links{
+display:none
+}
 
-.mobile{display:block}
+.mobile{
+display:block
+}
 
-.hero{min-height:570px}
+.hero{
+min-height:570px
+}
 
-.grid3,.properties,.valuation,.contact,.buyer-grid{
+.grid3,
+.properties,
+.valuation,
+.contact,
+.buyer-grid{
 grid-template-columns:1fr
 }
 
@@ -463,11 +532,17 @@ grid-template-columns:1fr
 grid-column:auto
 }
 
-.section{padding:60px 0}
+.section{
+padding:60px 0
+}
 
-.section h2{font-size:34px}
+.section h2{
+font-size:34px
+}
 
-.hero p{font-size:17px}
+.hero p{
+font-size:17px
+}
 
 .top .container{
 justify-content:center;
@@ -753,7 +828,7 @@ Reformada / muy buen estado
 
 </select>
 
-<button class="btn primary" type="submit" style="width:100%;margin-top:18px">
+<button class="btn primary" type="submit" id="valuationSubmitBtn" style="width:100%;margin-top:18px">
 CALCULAR ESTIMACIÓN
 </button>
 
@@ -1069,7 +1144,7 @@ Acepto el tratamiento de mis datos para gestionar mi solicitud de compra y conta
 
 <div class="buyer-full">
 
-<button class="btn primary" type="submit" style="width:100%;margin-top:18px">
+<button class="btn primary" id="buyerSubmitBtn" type="submit" style="width:100%;margin-top:18px">
 QUIERO RECIBIR VIVIENDAS
 </button>
 
@@ -1250,6 +1325,7 @@ Universidad de Texas 2, Almería
 </div>
 
 <div class="contactitem">
+
 <strong>💬 WhatsApp</strong><br>
 
 <a href="https://wa.me/34611668768?text=Hola%2C%20estoy%20interesado%2Fa%20en%20una%20vivienda%20y%20me%20gustar%C3%ADa%20recibir%20informaci%C3%B3n." target="_blank" rel="noopener">
@@ -1370,11 +1446,8 @@ reformada:1.07
 };
 
 const form=document.getElementById('valuationForm');
-
 const continueBtn=document.getElementById('continueBtn');
-
 const backBtn=document.getElementById('backBtn');
-
 const leadStatus=document.getElementById('leadStatus');
 
 const googleScriptUrl='https://script.google.com/macros/s/AKfycby-4dIfxIPyuT6EE-aRK4pot5CNbMY8q1tXer2pyVKJRq-Mu6L3KOvqWLq-Mvbf2cvp/exec';
@@ -1382,63 +1455,102 @@ const googleScriptUrl='https://script.google.com/macros/s/AKfycby-4dIfxIPyuT6EE-
 const siteUrl='https://josecaparros19.github.io/inmobiliaria-jose-caparros/';
 
 
-continueBtn.addEventListener('click',()=>{
+/* ==========================================
+   FUNCIÓN PARA VOLVER AL INICIO
+========================================== */
+
+function volverAlInicio(){
+
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
+
+setTimeout(function(){
+
+window.location.hash='inicio';
+
+},500);
+
+}
+
+
+/* ==========================================
+   PASO 1 VALORACIÓN
+========================================== */
+
+continueBtn.addEventListener('click',function(){
 
 const name=document.getElementById('leadName');
-
 const phone=document.getElementById('leadPhone');
-
 const consent=document.getElementById('consent');
 
-if(!name.reportValidity() || !phone.reportValidity() || !consent.reportValidity()) return;
+if(!name.reportValidity()) return;
+
+if(!phone.reportValidity()) return;
+
+if(!consent.reportValidity()) return;
 
 document.getElementById('step1').style.display='none';
-
 document.getElementById('step2').style.display='block';
 
 });
 
 
-backBtn.addEventListener('click',()=>{
+/* ==========================================
+   VOLVER AL PASO ANTERIOR
+========================================== */
+
+backBtn.addEventListener('click',function(){
 
 document.getElementById('step2').style.display='none';
-
 document.getElementById('step1').style.display='block';
 
 });
 
 
-form.addEventListener('submit',async function(e){
+/* ==========================================
+   FORMULARIO DE VALORACIÓN
+========================================== */
+
+form.addEventListener('submit',function(e){
 
 e.preventDefault();
 
+
 const sqm=Number(document.getElementById('sqm').value)||0;
-
 const rooms=Number(document.getElementById('rooms').value)||0;
-
 const baths=Number(document.getElementById('baths').value)||0;
 
 const type=document.getElementById('type').value;
-
 const area=document.getElementById('area').value;
-
 const condition=document.getElementById('condition').value;
+
 
 if(!sqm || !area){
 
 document.getElementById('sqm').reportValidity();
-
 document.getElementById('area').reportValidity();
 
 return;
 
 }
 
+
 const zone=zonePrices[area]||zonePrices.general;
 
-let priceM2=zone.price*(typeFactor[type]||1)*(conditionFactor[condition]||1);
 
-priceM2*=1+Math.min(Math.max(rooms-2,0),3)*.012+Math.min(Math.max(baths-1,0),2)*.008;
+let priceM2=
+zone.price*
+(typeFactor[type]||1)*
+(conditionFactor[condition]||1);
+
+
+priceM2*=
+1+
+Math.min(Math.max(rooms-2,0),3)*.012+
+Math.min(Math.max(baths-1,0),2)*.008;
+
 
 const center=Math.round((sqm*priceM2)/1000)*1000;
 
@@ -1446,29 +1558,48 @@ const low=Math.round(center*.94/1000)*1000;
 
 const high=Math.round(center*1.06/1000)*1000;
 
+
 document.getElementById('range').textContent=
-low.toLocaleString('es-ES')+' € – '+high.toLocaleString('es-ES')+' €';
+low.toLocaleString('es-ES')+
+' € – '+
+high.toLocaleString('es-ES')+
+' €';
+
 
 document.getElementById('zoneRef').textContent=
-'Referencia de la zona: '+zone.price.toLocaleString('es-ES')+' €/m² (agosto de 2026).';
+'Referencia de la zona: '+
+zone.price.toLocaleString('es-ES')+
+' €/m² (agosto de 2026).';
 
-const ex=[70,90,110].map(m=>
-'<div class="example"><span>'+m+' m²</span><strong>'+
+
+const ex=[70,90,110].map(function(m){
+
+return '<div class="example"><span>'+
+m+
+' m²</span><strong>'+
 Math.round((m*zone.price)/1000).toLocaleString('es-ES')+
-'.000 €</strong></div>'
-).join('');
+'.000 €</strong></div>';
+
+}).join('');
+
 
 document.getElementById('examples').innerHTML=ex;
+
 
 const resultBox=document.getElementById('result');
 
 resultBox.style.display='block';
-
 resultBox.classList.add('visible');
 
-setTimeout(()=>
-resultBox.scrollIntoView({behavior:'smooth',block:'start'}),80
-);
+
+setTimeout(function(){
+
+resultBox.scrollIntoView({
+behavior:'smooth',
+block:'start'
+});
+
+},80);
 
 
 const data={
@@ -1513,6 +1644,11 @@ leadStatus.style.display='block';
 leadStatus.textContent='Guardando tus datos...';
 
 
+const submitBtn=document.getElementById('valuationSubmitBtn');
+
+submitBtn.disabled=true;
+
+
 try{
 
 const iframe=document.getElementById('leadSubmitFrame');
@@ -1521,78 +1657,168 @@ const postForm=document.getElementById('leadPostForm');
 
 postForm.innerHTML='';
 
-Object.entries(data).forEach(([key,value])=>{
+
+Object.entries(data).forEach(function(entry){
+
+const key=entry[0];
+const value=entry[1];
 
 const input=document.createElement('input');
 
 input.type='hidden';
-
 input.name=key;
-
 input.value=value;
 
 postForm.appendChild(input);
 
 });
 
-postForm.action=googleScriptUrl;
 
+postForm.action=googleScriptUrl;
 postForm.target=iframe.name;
 
 postForm.submit();
 
-leadStatus.textContent=
-'✓ Datos enviados correctamente. La valoración ya está disponible abajo.';
+
+leadStatus.innerHTML=`
+<div class="success-box">
+
+<div class="icon">✓</div>
+
+<strong>
+¡Valoración recibida!
+</strong>
+
+<span>
+Hemos recibido tus datos correctamente.
+<br>
+Gracias por confiar en Inmobiliaria José Caparrós.
+<br>
+Volverás al inicio en unos segundos.
+</span>
+
+</div>
+`;
+
+
+/* WhatsApp */
+
+const msg=encodeURIComponent(
+'Hola, soy '+
+data.nombre+
+'. He realizado una valoración online de mi vivienda en '+
+data.zona+
+'. La estimación ha sido de '+
+data.valoracion+
+'. Mi teléfono es '+
+data.telefono+
+'. Me gustaría hablar sobre una valoración personalizada.'
+);
+
+
+document.getElementById('resultWhatsapp').href=
+'https://wa.me/34611668768?text='+msg;
+
+
+/* VOLVER AL INICIO */
+
+setTimeout(function(){
+
+form.reset();
+
+document.getElementById('step2').style.display='none';
+document.getElementById('step1').style.display='block';
+
+resultBox.style.display='none';
+resultBox.classList.remove('visible');
+
+leadStatus.style.display='none';
+
+submitBtn.disabled=false;
+
+volverAlInicio();
+
+},5000);
+
 
 }catch(err){
 
 console.error('Google Apps Script:',err);
 
-leadStatus.textContent=
-'La valoración está disponible, pero no hemos podido guardar los datos. Revisa la conexión de Google Sheets.';
+leadStatus.innerHTML=`
+<div class="success-box">
+
+<div class="icon">✓</div>
+
+<strong>
+La valoración está disponible
+</strong>
+
+<span>
+No hemos podido confirmar el guardado automático de los datos.
+Puedes continuar utilizando la web o contactar directamente con nosotros.
+</span>
+
+</div>
+`;
+
+submitBtn.disabled=false;
 
 }
-
-
-const msg=encodeURIComponent(
-'Hola, soy '+data.nombre+
-'. He realizado una valoración online de mi vivienda en '+data.zona+
-'. La estimación ha sido de '+data.valoracion+
-'. Mi teléfono es '+data.telefono+
-'. Me gustaría hablar sobre una valoración personalizada.'
-);
-
-document.getElementById('resultWhatsapp').href=
-'https://wa.me/34611668768?text='+msg;
 
 });
 
 
-/* FORMULARIO DE COMPRADORES */
+/* ==========================================
+   FORMULARIO DE COMPRADORES
+========================================== */
 
 const buyerForm=document.getElementById('buyerForm');
+
 
 buyerForm.addEventListener('submit',function(e){
 
 e.preventDefault();
 
+
 const consent=document.getElementById('buyerConsent');
+
+
+/* Comprobar campos obligatorios */
+
+if(!document.getElementById('buyerName').reportValidity()) return;
+
+if(!document.getElementById('buyerPhone').reportValidity()) return;
+
+if(!document.getElementById('buyerEmail').reportValidity()) return;
+
+if(!document.getElementById('buyerArea').reportValidity()) return;
+
+if(!document.getElementById('buyerSavings').reportValidity()) return;
+
+if(!document.getElementById('buyerIncome').reportValidity()) return;
 
 if(!consent.reportValidity()) return;
 
+
 const preferences=[];
+
 
 if(document.getElementById('buyerElevator').checked)
 preferences.push('Ascensor');
 
+
 if(document.getElementById('buyerGarage').checked)
 preferences.push('Garaje');
+
 
 if(document.getElementById('buyerTerrace').checked)
 preferences.push('Terraza');
 
+
 if(document.getElementById('buyerExterior').checked)
 preferences.push('Exterior');
+
 
 const buyerData={
 
@@ -1642,17 +1868,119 @@ origen:'Formulario comprador web Inmobiliaria José Caparrós'
 
 };
 
+
 const status=document.getElementById('buyerStatus');
+
+const submitBtn=document.getElementById('buyerSubmitBtn');
+
 
 status.style.display='block';
 
-status.textContent=
-'✓ Hemos recibido tus preferencias. En breve podremos contactar contigo para ayudarte a buscar vivienda.';
+status.textContent='Enviando tus preferencias...';
 
-console.log('Datos comprador preparados:',buyerData);
+submitBtn.disabled=true;
+
+
+/* Enviar comprador a Google Sheets */
+
+try{
+
+const iframe=document.getElementById('leadSubmitFrame');
+
+const postForm=document.getElementById('leadPostForm');
+
+
+postForm.innerHTML='';
+
+
+Object.entries(buyerData).forEach(function(entry){
+
+const key=entry[0];
+const value=entry[1];
+
+const input=document.createElement('input');
+
+input.type='hidden';
+input.name=key;
+input.value=value;
+
+postForm.appendChild(input);
 
 });
 
+
+postForm.action=googleScriptUrl;
+postForm.target=iframe.name;
+
+postForm.submit();
+
+
+/* Mensaje de confirmación */
+
+status.innerHTML=`
+<div class="success-box">
+
+<div class="icon">✓</div>
+
+<strong>
+¡Gracias por confiar en Inmobiliaria José Caparrós!
+</strong>
+
+<span>
+Hemos recibido tus preferencias de compra correctamente.
+<br>
+Analizaremos qué viviendas pueden encajar contigo y nos pondremos en contacto contigo.
+<br>
+Volverás al inicio en unos segundos.
+</span>
+
+</div>
+`;
+
+
+/* Volver al inicio */
+
+setTimeout(function(){
+
+buyerForm.reset();
+
+status.style.display='none';
+
+status.innerHTML='';
+
+submitBtn.disabled=false;
+
+volverAlInicio();
+
+},5000);
+
+
+}catch(err){
+
+console.error('Google Apps Script:',err);
+
+status.innerHTML=`
+<div class="success-box">
+
+<div class="icon">✓</div>
+
+<strong>
+Hemos recibido tu solicitud
+</strong>
+
+<span>
+Ha habido un problema al confirmar el envío automático.
+Puedes contactar con nosotros directamente por WhatsApp o teléfono.
+</span>
+
+</div>
+`;
+
+submitBtn.disabled=false;
+
+}
+
+});
 
 </script>
 
