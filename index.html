@@ -507,6 +507,47 @@ font-size:14px;
 color:var(--muted)
 }
 
+/* ==========================================================
+   COMPARACIÓN PRECIO OBJETIVO
+========================================================== */
+
+.target-comparison{
+margin-top:18px;
+padding:16px;
+background:#fff;
+border:1px solid var(--line);
+border-radius:4px
+}
+
+.target-comparison-title{
+font-size:14px;
+font-weight:800;
+margin-bottom:5px
+}
+
+.target-comparison-price{
+font-size:24px;
+font-weight:800;
+margin-bottom:8px
+}
+
+.target-comparison-message{
+font-size:13px;
+line-height:1.5
+}
+
+.target-comparison-message.good{
+color:#168f45
+}
+
+.target-comparison-message.high{
+color:#a56600
+}
+
+.target-comparison-message.low{
+color:#596b8a
+}
+
 @media(max-width:800px){
 
 .links{
@@ -822,6 +863,26 @@ Quizá más adelante
 </select>
 
 
+<!-- NUEVO: PRECIO OBJETIVO -->
+
+<label>
+¿Qué precio te gustaría pedir por tu vivienda? *
+</label>
+
+<input
+id="leadPrice"
+type="number"
+min="1"
+step="1000"
+placeholder="Ej. 180000 €"
+required
+>
+
+<div class="notice">
+Indícanos el precio que tienes en mente para venderla. Después lo compararemos con la estimación.
+</div>
+
+
 <label style="display:flex;gap:8px;align-items:flex-start;font-weight:500">
 
 <input
@@ -1120,6 +1181,32 @@ id="zoneRef"
 class="notice"
 style="margin-top:8px"
 ></div>
+
+
+<!-- NUEVO: COMPARACIÓN CON PRECIO OBJETIVO -->
+
+<div
+id="targetComparison"
+class="target-comparison"
+>
+
+<div class="target-comparison-title">
+Tu precio objetivo
+</div>
+
+<div
+id="targetPrice"
+class="target-comparison-price"
+>
+</div>
+
+<div
+id="targetComparisonMessage"
+class="target-comparison-message"
+>
+</div>
+
+</div>
 
 
 <div id="comparisonBox" style="margin-top:16px">
@@ -2898,6 +2985,12 @@ const vender=
 document.getElementById('leadSelling').value;
 
 
+/* NUEVO: PRECIO OBJETIVO */
+
+const precioObjetivo=
+document.getElementById('leadPrice').value;
+
+
 leadId=
 Date.now().toString()+
 "-"+
@@ -2919,6 +3012,8 @@ email:email,
 consentimiento:'Sí',
 
 vender:vender,
+
+precioObjetivo:precioObjetivo,
 
 pagina:siteUrl,
 
@@ -3020,6 +3115,9 @@ document.getElementById('leadPhone');
 const email=
 document.getElementById('leadEmail');
 
+const leadPrice=
+document.getElementById('leadPrice');
+
 const consent=
 document.getElementById('consent');
 
@@ -3031,6 +3129,12 @@ if(!phone.reportValidity())
 return;
 
 if(!email.reportValidity())
+return;
+
+
+/* NUEVO: VALIDAR PRECIO OBJETIVO */
+
+if(!leadPrice.reportValidity())
 return;
 
 if(!consent.reportValidity())
@@ -3122,6 +3226,14 @@ document.getElementById('area').value;
 
 const condition=
 document.getElementById('condition').value;
+
+
+/* NUEVO: PRECIO OBJETIVO */
+
+const precioObjetivo=
+Number(
+document.getElementById('leadPrice').value
+)||0;
 
 
 if(!sqm || !municipio || !area){
@@ -3248,6 +3360,82 @@ zone.price.toLocaleString('es-ES')+
 ' €/m² (agosto de 2026).';
 
 
+/* ==========================================================
+   COMPARAR PRECIO OBJETIVO CON VALORACIÓN
+========================================================== */
+
+const targetPriceElement=
+document.getElementById('targetPrice');
+
+const targetMessageElement=
+document.getElementById('targetComparisonMessage');
+
+
+targetPriceElement.textContent=
+precioObjetivo.toLocaleString('es-ES')+
+' €';
+
+
+/* LIMPIAR CLASES ANTERIORES */
+
+targetMessageElement.className=
+'target-comparison-message';
+
+
+if(precioObjetivo>high){
+
+targetMessageElement.classList.add('high');
+
+targetMessageElement.innerHTML=
+
+'⚠️ Tu precio objetivo está por encima del rango estimado. '+
+'Has indicado '+
+precioObjetivo.toLocaleString('es-ES')+
+' €, mientras que la estimación online se sitúa entre '+
+low.toLocaleString('es-ES')+
+' € y '+
+high.toLocaleString('es-ES')+
+' €.';
+
+}
+
+
+else if(precioObjetivo<low){
+
+targetMessageElement.classList.add('low');
+
+targetMessageElement.innerHTML=
+
+'ℹ️ Tu precio objetivo está por debajo del rango estimado. '+
+'Has indicado '+
+precioObjetivo.toLocaleString('es-ES')+
+' €, mientras que la estimación online se sitúa entre '+
+low.toLocaleString('es-ES')+
+' € y '+
+high.toLocaleString('es-ES')+
+' €.';
+
+}
+
+
+else{
+
+targetMessageElement.classList.add('good');
+
+targetMessageElement.innerHTML=
+
+'✅ Tu precio objetivo está dentro del rango estimado. '+
+'Has indicado '+
+precioObjetivo.toLocaleString('es-ES')+
+' € y la estimación online se sitúa entre '+
+low.toLocaleString('es-ES')+
+' € y '+
+high.toLocaleString('es-ES')+
+' €.';
+
+}
+
+
 /* EJEMPLOS */
 
 const examples=
@@ -3305,7 +3493,9 @@ block:'start'
 );
 
 
-/* ACTUALIZAR LEAD */
+/* ==========================================================
+   ACTUALIZAR LEAD
+========================================================== */
 
 const data={
 
@@ -3332,6 +3522,11 @@ baths,
 
 estado:
 condition,
+
+/* NUEVO */
+
+precioObjetivo:
+precioObjetivo,
 
 valoracion:
 
@@ -3390,7 +3585,9 @@ err
 }
 
 
-/* WHATSAPP */
+/* ==========================================================
+   WHATSAPP
+========================================================== */
 
 const msg=
 encodeURIComponent(
@@ -3403,6 +3600,8 @@ zone.name+
 low.toLocaleString('es-ES')+
 ' € - '+
 high.toLocaleString('es-ES')+
+' €. Mi precio objetivo es de '+
+precioObjetivo.toLocaleString('es-ES')+
 ' €. Mi teléfono es '+
 document.getElementById('leadPhone').value+
 '. Me gustaría hablar sobre una valoración personalizada.'
@@ -3417,7 +3616,9 @@ document.getElementById(
 msg;
 
 
-/* ESTADO */
+/* ==========================================================
+   ESTADO
+========================================================== */
 
 leadStatus.style.display='block';
 
@@ -3447,7 +3648,9 @@ Si quieres, puedes contactar directamente con nosotros para una valoración pers
 `;
 
 
-/* RESET */
+/* ==========================================================
+   RESET
+========================================================== */
 
 setTimeout(
 function(){
@@ -3483,6 +3686,24 @@ areaSelect.innerHTML='';
 areaSelect.style.display='none';
 
 zonaLabel.style.display='none';
+
+
+/* LIMPIAR COMPARACIÓN */
+
+document.getElementById(
+'targetPrice'
+).textContent='';
+
+
+document.getElementById(
+'targetComparisonMessage'
+).textContent='';
+
+
+document.getElementById(
+'targetComparisonMessage'
+).className=
+'target-comparison-message';
 
 
 window.scrollTo({
